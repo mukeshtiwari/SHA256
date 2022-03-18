@@ -1,4 +1,5 @@
-Require Hash.Sha256 Extraction.
+Require Hash.Sha256 Extraction
+ExtrOcamlString.
 Extraction Language OCaml.
 Extract Inductive bool => "bool" [ "true" "false" ].
 Extract Inductive sumbool => "bool" [ "true" "false" ].

@@ -74,652 +74,6 @@ let rec sub n0 m0 =
              | O -> n0
              | S l -> sub k0 l)
 
-type byte =
-| X00
-| X01
-| X02
-| X03
-| X04
-| X05
-| X06
-| X07
-| X08
-| X09
-| X0a
-| X0b
-| X0c
-| X0d
-| X0e
-| X0f
-| X10
-| X11
-| X12
-| X13
-| X14
-| X15
-| X16
-| X17
-| X18
-| X19
-| X1a
-| X1b
-| X1c
-| X1d
-| X1e
-| X1f
-| X20
-| X21
-| X22
-| X23
-| X24
-| X25
-| X26
-| X27
-| X28
-| X29
-| X2a
-| X2b
-| X2c
-| X2d
-| X2e
-| X2f
-| X30
-| X31
-| X32
-| X33
-| X34
-| X35
-| X36
-| X37
-| X38
-| X39
-| X3a
-| X3b
-| X3c
-| X3d
-| X3e
-| X3f
-| X40
-| X41
-| X42
-| X43
-| X44
-| X45
-| X46
-| X47
-| X48
-| X49
-| X4a
-| X4b
-| X4c
-| X4d
-| X4e
-| X4f
-| X50
-| X51
-| X52
-| X53
-| X54
-| X55
-| X56
-| X57
-| X58
-| X59
-| X5a
-| X5b
-| X5c
-| X5d
-| X5e
-| X5f
-| X60
-| X61
-| X62
-| X63
-| X64
-| X65
-| X66
-| X67
-| X68
-| X69
-| X6a
-| X6b
-| X6c
-| X6d
-| X6e
-| X6f
-| X70
-| X71
-| X72
-| X73
-| X74
-| X75
-| X76
-| X77
-| X78
-| X79
-| X7a
-| X7b
-| X7c
-| X7d
-| X7e
-| X7f
-| X80
-| X81
-| X82
-| X83
-| X84
-| X85
-| X86
-| X87
-| X88
-| X89
-| X8a
-| X8b
-| X8c
-| X8d
-| X8e
-| X8f
-| X90
-| X91
-| X92
-| X93
-| X94
-| X95
-| X96
-| X97
-| X98
-| X99
-| X9a
-| X9b
-| X9c
-| X9d
-| X9e
-| X9f
-| Xa0
-| Xa1
-| Xa2
-| Xa3
-| Xa4
-| Xa5
-| Xa6
-| Xa7
-| Xa8
-| Xa9
-| Xaa
-| Xab
-| Xac
-| Xad
-| Xae
-| Xaf
-| Xb0
-| Xb1
-| Xb2
-| Xb3
-| Xb4
-| Xb5
-| Xb6
-| Xb7
-| Xb8
-| Xb9
-| Xba
-| Xbb
-| Xbc
-| Xbd
-| Xbe
-| Xbf
-| Xc0
-| Xc1
-| Xc2
-| Xc3
-| Xc4
-| Xc5
-| Xc6
-| Xc7
-| Xc8
-| Xc9
-| Xca
-| Xcb
-| Xcc
-| Xcd
-| Xce
-| Xcf
-| Xd0
-| Xd1
-| Xd2
-| Xd3
-| Xd4
-| Xd5
-| Xd6
-| Xd7
-| Xd8
-| Xd9
-| Xda
-| Xdb
-| Xdc
-| Xdd
-| Xde
-| Xdf
-| Xe0
-| Xe1
-| Xe2
-| Xe3
-| Xe4
-| Xe5
-| Xe6
-| Xe7
-| Xe8
-| Xe9
-| Xea
-| Xeb
-| Xec
-| Xed
-| Xee
-| Xef
-| Xf0
-| Xf1
-| Xf2
-| Xf3
-| Xf4
-| Xf5
-| Xf6
-| Xf7
-| Xf8
-| Xf9
-| Xfa
-| Xfb
-| Xfc
-| Xfd
-| Xfe
-| Xff
-
-(** val of_bits :
-    (bool, (bool, (bool, (bool, (bool, (bool, (bool, bool) prod) prod) prod)
-    prod) prod) prod) prod -> byte **)
-
-let of_bits = function
-| Pair (b0, p) ->
-  if b0
-  then let Pair (b1, p0) = p in
-       if b1
-       then let Pair (b2, p1) = p0 in
-            if b2
-            then let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xff else X7f
-                                else if b7 then Xbf else X3f
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xdf else X5f
-                                else if b7 then X9f else X1f
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xef else X6f
-                                else if b7 then Xaf else X2f
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xcf else X4f
-                                else if b7 then X8f else X0f
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf7 else X77
-                                else if b7 then Xb7 else X37
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd7 else X57
-                                else if b7 then X97 else X17
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe7 else X67
-                                else if b7 then Xa7 else X27
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc7 else X47
-                                else if b7 then X87 else X07
-            else let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xfb else X7b
-                                else if b7 then Xbb else X3b
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xdb else X5b
-                                else if b7 then X9b else X1b
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xeb else X6b
-                                else if b7 then Xab else X2b
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xcb else X4b
-                                else if b7 then X8b else X0b
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf3 else X73
-                                else if b7 then Xb3 else X33
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd3 else X53
-                                else if b7 then X93 else X13
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe3 else X63
-                                else if b7 then Xa3 else X23
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc3 else X43
-                                else if b7 then X83 else X03
-       else let Pair (b2, p1) = p0 in
-            if b2
-            then let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xfd else X7d
-                                else if b7 then Xbd else X3d
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xdd else X5d
-                                else if b7 then X9d else X1d
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xed else X6d
-                                else if b7 then Xad else X2d
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xcd else X4d
-                                else if b7 then X8d else X0d
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf5 else X75
-                                else if b7 then Xb5 else X35
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd5 else X55
-                                else if b7 then X95 else X15
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe5 else X65
-                                else if b7 then Xa5 else X25
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc5 else X45
-                                else if b7 then X85 else X05
-            else let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf9 else X79
-                                else if b7 then Xb9 else X39
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd9 else X59
-                                else if b7 then X99 else X19
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe9 else X69
-                                else if b7 then Xa9 else X29
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc9 else X49
-                                else if b7 then X89 else X09
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf1 else X71
-                                else if b7 then Xb1 else X31
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd1 else X51
-                                else if b7 then X91 else X11
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe1 else X61
-                                else if b7 then Xa1 else X21
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc1 else X41
-                                else if b7 then X81 else X01
-  else let Pair (b1, p0) = p in
-       if b1
-       then let Pair (b2, p1) = p0 in
-            if b2
-            then let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xfe else X7e
-                                else if b7 then Xbe else X3e
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xde else X5e
-                                else if b7 then X9e else X1e
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xee else X6e
-                                else if b7 then Xae else X2e
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xce else X4e
-                                else if b7 then X8e else X0e
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf6 else X76
-                                else if b7 then Xb6 else X36
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd6 else X56
-                                else if b7 then X96 else X16
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe6 else X66
-                                else if b7 then Xa6 else X26
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc6 else X46
-                                else if b7 then X86 else X06
-            else let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xfa else X7a
-                                else if b7 then Xba else X3a
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xda else X5a
-                                else if b7 then X9a else X1a
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xea else X6a
-                                else if b7 then Xaa else X2a
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xca else X4a
-                                else if b7 then X8a else X0a
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf2 else X72
-                                else if b7 then Xb2 else X32
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd2 else X52
-                                else if b7 then X92 else X12
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe2 else X62
-                                else if b7 then Xa2 else X22
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc2 else X42
-                                else if b7 then X82 else X02
-       else let Pair (b2, p1) = p0 in
-            if b2
-            then let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xfc else X7c
-                                else if b7 then Xbc else X3c
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xdc else X5c
-                                else if b7 then X9c else X1c
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xec else X6c
-                                else if b7 then Xac else X2c
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xcc else X4c
-                                else if b7 then X8c else X0c
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf4 else X74
-                                else if b7 then Xb4 else X34
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd4 else X54
-                                else if b7 then X94 else X14
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe4 else X64
-                                else if b7 then Xa4 else X24
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc4 else X44
-                                else if b7 then X84 else X04
-            else let Pair (b3, p2) = p1 in
-                 if b3
-                 then let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf8 else X78
-                                else if b7 then Xb8 else X38
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd8 else X58
-                                else if b7 then X98 else X18
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe8 else X68
-                                else if b7 then Xa8 else X28
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc8 else X48
-                                else if b7 then X88 else X08
-                 else let Pair (b4, p3) = p2 in
-                      if b4
-                      then let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xf0 else X70
-                                else if b7 then Xb0 else X30
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xd0 else X50
-                                else if b7 then X90 else X10
-                      else let Pair (b5, p4) = p3 in
-                           if b5
-                           then let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xe0 else X60
-                                else if b7 then Xa0 else X20
-                           else let Pair (b6, b7) = p4 in
-                                if b6
-                                then if b7 then Xc0 else X40
-                                else if b7 then X80 else X00
-
 module Nat =
  struct
   (** val leb : nat -> nat -> bool **)
@@ -813,11 +167,10 @@ module Coq_Pos =
        | XI q -> XO (add_carry p q)
        | XO q -> XI (add p q)
        | XH -> XO (succ p))
-    | XO p ->
-      (match y with
-       | XI q -> XI (add p q)
-       | XO q -> XO (add p q)
-       | XH -> XI p)
+    | XO p -> (match y with
+               | XI q -> XI (add p q)
+               | XO q -> XO (add p q)
+               | XH -> XI p)
     | XH -> (match y with
              | XI q -> XO (succ q)
              | XO q -> XI q
@@ -837,11 +190,10 @@ module Coq_Pos =
        | XI q -> XO (add_carry p q)
        | XO q -> XI (add p q)
        | XH -> XO (succ p))
-    | XH ->
-      (match y with
-       | XI q -> XI (succ q)
-       | XO q -> XO (succ q)
-       | XH -> XI XH)
+    | XH -> (match y with
+             | XI q -> XI (succ q)
+             | XO q -> XO (succ q)
+             | XH -> XI XH)
 
   (** val pred_double : positive -> positive **)
 
@@ -1028,11 +380,10 @@ module Coq_Pos =
        | XI q0 -> coq_Nsucc_double (coq_lxor p0 q0)
        | XO q0 -> coq_Ndouble (coq_lxor p0 q0)
        | XH -> Npos (XI p0))
-    | XH ->
-      (match q with
-       | XI q0 -> Npos (XO q0)
-       | XO q0 -> Npos (XI q0)
-       | XH -> N0)
+    | XH -> (match q with
+             | XI q0 -> Npos (XO q0)
+             | XO q0 -> Npos (XI q0)
+             | XH -> N0)
 
   (** val shiftl : positive -> n -> positive **)
 
@@ -1163,32 +514,26 @@ module N =
     | XI a' ->
       let Pair (q, r) = pos_div_eucl a' b in
       let r' = succ_double r in
-      if leb b r'
-      then Pair ((succ_double q), (sub r' b))
-      else Pair ((double q), r')
+      if leb b r' then Pair ((succ_double q), (sub r' b)) else Pair ((double q), r')
     | XO a' ->
       let Pair (q, r) = pos_div_eucl a' b in
       let r' = double r in
-      if leb b r'
-      then Pair ((succ_double q), (sub r' b))
-      else Pair ((double q), r')
+      if leb b r' then Pair ((succ_double q), (sub r' b)) else Pair ((double q), r')
     | XH ->
       (match b with
        | N0 -> Pair (N0, (Npos XH))
-       | Npos p ->
-         (match p with
-          | XH -> Pair ((Npos XH), N0)
-          | _ -> Pair (N0, (Npos XH))))
+       | Npos p -> (match p with
+                    | XH -> Pair ((Npos XH), N0)
+                    | _ -> Pair (N0, (Npos XH))))
 
   (** val div_eucl : n -> n -> (n, n) prod **)
 
   let div_eucl a b =
     match a with
     | N0 -> Pair (N0, N0)
-    | Npos na ->
-      (match b with
-       | N0 -> Pair (N0, a)
-       | Npos _ -> pos_div_eucl na b)
+    | Npos na -> (match b with
+                  | N0 -> Pair (N0, a)
+                  | Npos _ -> pos_div_eucl na b)
 
   (** val div : n -> n -> n **)
 
@@ -1205,10 +550,9 @@ module N =
   let coq_lor n0 m0 =
     match n0 with
     | N0 -> m0
-    | Npos p ->
-      (match m0 with
-       | N0 -> n0
-       | Npos q -> Npos (Coq_Pos.coq_lor p q))
+    | Npos p -> (match m0 with
+                 | N0 -> n0
+                 | Npos q -> Npos (Coq_Pos.coq_lor p q))
 
   (** val coq_land : n -> n -> n **)
 
@@ -1362,10 +706,9 @@ module Z =
     | Zpos x' -> (match y with
                   | Zpos y' -> Coq_Pos.compare x' y'
                   | _ -> Gt)
-    | Zneg x' ->
-      (match y with
-       | Zneg y' -> compOpp (Coq_Pos.compare x' y')
-       | _ -> Lt)
+    | Zneg x' -> (match y with
+                  | Zneg y' -> compOpp (Coq_Pos.compare x' y')
+                  | _ -> Lt)
 
   (** val leb : z -> z -> bool **)
 
@@ -1409,10 +752,7 @@ module Z =
       if ltb r' b
       then Pair ((mul (Zpos (XO XH)) q), r')
       else Pair ((add (mul (Zpos (XO XH)) q) (Zpos XH)), (sub r' b))
-    | XH ->
-      if leb (Zpos (XO XH)) b
-      then Pair (Z0, (Zpos XH))
-      else Pair ((Zpos XH), Z0)
+    | XH -> if leb (Zpos (XO XH)) b then Pair (Z0, (Zpos XH)) else Pair ((Zpos XH), Z0)
 
   (** val div_eucl : z -> z -> (z, z) prod **)
 
@@ -1436,8 +776,7 @@ module Z =
          (match r with
           | Z0 -> Pair ((opp q), Z0)
           | _ -> Pair ((opp (add q (Zpos XH))), (sub b r)))
-       | Zneg b' ->
-         let Pair (q, r) = pos_div_eucl a' (Zpos b') in Pair (q, (opp r)))
+       | Zneg b' -> let Pair (q, r) = pos_div_eucl a' (Zpos b') in Pair (q, (opp r)))
 
   (** val modulo : z -> z -> z **)
 
@@ -1445,270 +784,270 @@ module Z =
     let Pair (_, r) = div_eucl a b in r
  end
 
-(** val to_N0 : byte -> n **)
+(** val to_N0 : char -> n **)
 
 let to_N0 = function
-| X00 -> N0
-| X01 -> Npos XH
-| X02 -> Npos (XO XH)
-| X03 -> Npos (XI XH)
-| X04 -> Npos (XO (XO XH))
-| X05 -> Npos (XI (XO XH))
-| X06 -> Npos (XO (XI XH))
-| X07 -> Npos (XI (XI XH))
-| X08 -> Npos (XO (XO (XO XH)))
-| X09 -> Npos (XI (XO (XO XH)))
-| X0a -> Npos (XO (XI (XO XH)))
-| X0b -> Npos (XI (XI (XO XH)))
-| X0c -> Npos (XO (XO (XI XH)))
-| X0d -> Npos (XI (XO (XI XH)))
-| X0e -> Npos (XO (XI (XI XH)))
-| X0f -> Npos (XI (XI (XI XH)))
-| X10 -> Npos (XO (XO (XO (XO XH))))
-| X11 -> Npos (XI (XO (XO (XO XH))))
-| X12 -> Npos (XO (XI (XO (XO XH))))
-| X13 -> Npos (XI (XI (XO (XO XH))))
-| X14 -> Npos (XO (XO (XI (XO XH))))
-| X15 -> Npos (XI (XO (XI (XO XH))))
-| X16 -> Npos (XO (XI (XI (XO XH))))
-| X17 -> Npos (XI (XI (XI (XO XH))))
-| X18 -> Npos (XO (XO (XO (XI XH))))
-| X19 -> Npos (XI (XO (XO (XI XH))))
-| X1a -> Npos (XO (XI (XO (XI XH))))
-| X1b -> Npos (XI (XI (XO (XI XH))))
-| X1c -> Npos (XO (XO (XI (XI XH))))
-| X1d -> Npos (XI (XO (XI (XI XH))))
-| X1e -> Npos (XO (XI (XI (XI XH))))
-| X1f -> Npos (XI (XI (XI (XI XH))))
-| X20 -> Npos (XO (XO (XO (XO (XO XH)))))
-| X21 -> Npos (XI (XO (XO (XO (XO XH)))))
-| X22 -> Npos (XO (XI (XO (XO (XO XH)))))
-| X23 -> Npos (XI (XI (XO (XO (XO XH)))))
-| X24 -> Npos (XO (XO (XI (XO (XO XH)))))
-| X25 -> Npos (XI (XO (XI (XO (XO XH)))))
-| X26 -> Npos (XO (XI (XI (XO (XO XH)))))
-| X27 -> Npos (XI (XI (XI (XO (XO XH)))))
-| X28 -> Npos (XO (XO (XO (XI (XO XH)))))
-| X29 -> Npos (XI (XO (XO (XI (XO XH)))))
-| X2a -> Npos (XO (XI (XO (XI (XO XH)))))
-| X2b -> Npos (XI (XI (XO (XI (XO XH)))))
-| X2c -> Npos (XO (XO (XI (XI (XO XH)))))
-| X2d -> Npos (XI (XO (XI (XI (XO XH)))))
-| X2e -> Npos (XO (XI (XI (XI (XO XH)))))
-| X2f -> Npos (XI (XI (XI (XI (XO XH)))))
-| X30 -> Npos (XO (XO (XO (XO (XI XH)))))
-| X31 -> Npos (XI (XO (XO (XO (XI XH)))))
-| X32 -> Npos (XO (XI (XO (XO (XI XH)))))
-| X33 -> Npos (XI (XI (XO (XO (XI XH)))))
-| X34 -> Npos (XO (XO (XI (XO (XI XH)))))
-| X35 -> Npos (XI (XO (XI (XO (XI XH)))))
-| X36 -> Npos (XO (XI (XI (XO (XI XH)))))
-| X37 -> Npos (XI (XI (XI (XO (XI XH)))))
-| X38 -> Npos (XO (XO (XO (XI (XI XH)))))
-| X39 -> Npos (XI (XO (XO (XI (XI XH)))))
-| X3a -> Npos (XO (XI (XO (XI (XI XH)))))
-| X3b -> Npos (XI (XI (XO (XI (XI XH)))))
-| X3c -> Npos (XO (XO (XI (XI (XI XH)))))
-| X3d -> Npos (XI (XO (XI (XI (XI XH)))))
-| X3e -> Npos (XO (XI (XI (XI (XI XH)))))
-| X3f -> Npos (XI (XI (XI (XI (XI XH)))))
-| X40 -> Npos (XO (XO (XO (XO (XO (XO XH))))))
-| X41 -> Npos (XI (XO (XO (XO (XO (XO XH))))))
-| X42 -> Npos (XO (XI (XO (XO (XO (XO XH))))))
-| X43 -> Npos (XI (XI (XO (XO (XO (XO XH))))))
-| X44 -> Npos (XO (XO (XI (XO (XO (XO XH))))))
-| X45 -> Npos (XI (XO (XI (XO (XO (XO XH))))))
-| X46 -> Npos (XO (XI (XI (XO (XO (XO XH))))))
-| X47 -> Npos (XI (XI (XI (XO (XO (XO XH))))))
-| X48 -> Npos (XO (XO (XO (XI (XO (XO XH))))))
-| X49 -> Npos (XI (XO (XO (XI (XO (XO XH))))))
-| X4a -> Npos (XO (XI (XO (XI (XO (XO XH))))))
-| X4b -> Npos (XI (XI (XO (XI (XO (XO XH))))))
-| X4c -> Npos (XO (XO (XI (XI (XO (XO XH))))))
-| X4d -> Npos (XI (XO (XI (XI (XO (XO XH))))))
-| X4e -> Npos (XO (XI (XI (XI (XO (XO XH))))))
-| X4f -> Npos (XI (XI (XI (XI (XO (XO XH))))))
-| X50 -> Npos (XO (XO (XO (XO (XI (XO XH))))))
-| X51 -> Npos (XI (XO (XO (XO (XI (XO XH))))))
-| X52 -> Npos (XO (XI (XO (XO (XI (XO XH))))))
-| X53 -> Npos (XI (XI (XO (XO (XI (XO XH))))))
-| X54 -> Npos (XO (XO (XI (XO (XI (XO XH))))))
-| X55 -> Npos (XI (XO (XI (XO (XI (XO XH))))))
-| X56 -> Npos (XO (XI (XI (XO (XI (XO XH))))))
-| X57 -> Npos (XI (XI (XI (XO (XI (XO XH))))))
-| X58 -> Npos (XO (XO (XO (XI (XI (XO XH))))))
-| X59 -> Npos (XI (XO (XO (XI (XI (XO XH))))))
-| X5a -> Npos (XO (XI (XO (XI (XI (XO XH))))))
-| X5b -> Npos (XI (XI (XO (XI (XI (XO XH))))))
-| X5c -> Npos (XO (XO (XI (XI (XI (XO XH))))))
-| X5d -> Npos (XI (XO (XI (XI (XI (XO XH))))))
-| X5e -> Npos (XO (XI (XI (XI (XI (XO XH))))))
-| X5f -> Npos (XI (XI (XI (XI (XI (XO XH))))))
-| X60 -> Npos (XO (XO (XO (XO (XO (XI XH))))))
-| X61 -> Npos (XI (XO (XO (XO (XO (XI XH))))))
-| X62 -> Npos (XO (XI (XO (XO (XO (XI XH))))))
-| X63 -> Npos (XI (XI (XO (XO (XO (XI XH))))))
-| X64 -> Npos (XO (XO (XI (XO (XO (XI XH))))))
-| X65 -> Npos (XI (XO (XI (XO (XO (XI XH))))))
-| X66 -> Npos (XO (XI (XI (XO (XO (XI XH))))))
-| X67 -> Npos (XI (XI (XI (XO (XO (XI XH))))))
-| X68 -> Npos (XO (XO (XO (XI (XO (XI XH))))))
-| X69 -> Npos (XI (XO (XO (XI (XO (XI XH))))))
-| X6a -> Npos (XO (XI (XO (XI (XO (XI XH))))))
-| X6b -> Npos (XI (XI (XO (XI (XO (XI XH))))))
-| X6c -> Npos (XO (XO (XI (XI (XO (XI XH))))))
-| X6d -> Npos (XI (XO (XI (XI (XO (XI XH))))))
-| X6e -> Npos (XO (XI (XI (XI (XO (XI XH))))))
-| X6f -> Npos (XI (XI (XI (XI (XO (XI XH))))))
-| X70 -> Npos (XO (XO (XO (XO (XI (XI XH))))))
-| X71 -> Npos (XI (XO (XO (XO (XI (XI XH))))))
-| X72 -> Npos (XO (XI (XO (XO (XI (XI XH))))))
-| X73 -> Npos (XI (XI (XO (XO (XI (XI XH))))))
-| X74 -> Npos (XO (XO (XI (XO (XI (XI XH))))))
-| X75 -> Npos (XI (XO (XI (XO (XI (XI XH))))))
-| X76 -> Npos (XO (XI (XI (XO (XI (XI XH))))))
-| X77 -> Npos (XI (XI (XI (XO (XI (XI XH))))))
-| X78 -> Npos (XO (XO (XO (XI (XI (XI XH))))))
-| X79 -> Npos (XI (XO (XO (XI (XI (XI XH))))))
-| X7a -> Npos (XO (XI (XO (XI (XI (XI XH))))))
-| X7b -> Npos (XI (XI (XO (XI (XI (XI XH))))))
-| X7c -> Npos (XO (XO (XI (XI (XI (XI XH))))))
-| X7d -> Npos (XI (XO (XI (XI (XI (XI XH))))))
-| X7e -> Npos (XO (XI (XI (XI (XI (XI XH))))))
-| X7f -> Npos (XI (XI (XI (XI (XI (XI XH))))))
-| X80 -> Npos (XO (XO (XO (XO (XO (XO (XO XH)))))))
-| X81 -> Npos (XI (XO (XO (XO (XO (XO (XO XH)))))))
-| X82 -> Npos (XO (XI (XO (XO (XO (XO (XO XH)))))))
-| X83 -> Npos (XI (XI (XO (XO (XO (XO (XO XH)))))))
-| X84 -> Npos (XO (XO (XI (XO (XO (XO (XO XH)))))))
-| X85 -> Npos (XI (XO (XI (XO (XO (XO (XO XH)))))))
-| X86 -> Npos (XO (XI (XI (XO (XO (XO (XO XH)))))))
-| X87 -> Npos (XI (XI (XI (XO (XO (XO (XO XH)))))))
-| X88 -> Npos (XO (XO (XO (XI (XO (XO (XO XH)))))))
-| X89 -> Npos (XI (XO (XO (XI (XO (XO (XO XH)))))))
-| X8a -> Npos (XO (XI (XO (XI (XO (XO (XO XH)))))))
-| X8b -> Npos (XI (XI (XO (XI (XO (XO (XO XH)))))))
-| X8c -> Npos (XO (XO (XI (XI (XO (XO (XO XH)))))))
-| X8d -> Npos (XI (XO (XI (XI (XO (XO (XO XH)))))))
-| X8e -> Npos (XO (XI (XI (XI (XO (XO (XO XH)))))))
-| X8f -> Npos (XI (XI (XI (XI (XO (XO (XO XH)))))))
-| X90 -> Npos (XO (XO (XO (XO (XI (XO (XO XH)))))))
-| X91 -> Npos (XI (XO (XO (XO (XI (XO (XO XH)))))))
-| X92 -> Npos (XO (XI (XO (XO (XI (XO (XO XH)))))))
-| X93 -> Npos (XI (XI (XO (XO (XI (XO (XO XH)))))))
-| X94 -> Npos (XO (XO (XI (XO (XI (XO (XO XH)))))))
-| X95 -> Npos (XI (XO (XI (XO (XI (XO (XO XH)))))))
-| X96 -> Npos (XO (XI (XI (XO (XI (XO (XO XH)))))))
-| X97 -> Npos (XI (XI (XI (XO (XI (XO (XO XH)))))))
-| X98 -> Npos (XO (XO (XO (XI (XI (XO (XO XH)))))))
-| X99 -> Npos (XI (XO (XO (XI (XI (XO (XO XH)))))))
-| X9a -> Npos (XO (XI (XO (XI (XI (XO (XO XH)))))))
-| X9b -> Npos (XI (XI (XO (XI (XI (XO (XO XH)))))))
-| X9c -> Npos (XO (XO (XI (XI (XI (XO (XO XH)))))))
-| X9d -> Npos (XI (XO (XI (XI (XI (XO (XO XH)))))))
-| X9e -> Npos (XO (XI (XI (XI (XI (XO (XO XH)))))))
-| X9f -> Npos (XI (XI (XI (XI (XI (XO (XO XH)))))))
-| Xa0 -> Npos (XO (XO (XO (XO (XO (XI (XO XH)))))))
-| Xa1 -> Npos (XI (XO (XO (XO (XO (XI (XO XH)))))))
-| Xa2 -> Npos (XO (XI (XO (XO (XO (XI (XO XH)))))))
-| Xa3 -> Npos (XI (XI (XO (XO (XO (XI (XO XH)))))))
-| Xa4 -> Npos (XO (XO (XI (XO (XO (XI (XO XH)))))))
-| Xa5 -> Npos (XI (XO (XI (XO (XO (XI (XO XH)))))))
-| Xa6 -> Npos (XO (XI (XI (XO (XO (XI (XO XH)))))))
-| Xa7 -> Npos (XI (XI (XI (XO (XO (XI (XO XH)))))))
-| Xa8 -> Npos (XO (XO (XO (XI (XO (XI (XO XH)))))))
-| Xa9 -> Npos (XI (XO (XO (XI (XO (XI (XO XH)))))))
-| Xaa -> Npos (XO (XI (XO (XI (XO (XI (XO XH)))))))
-| Xab -> Npos (XI (XI (XO (XI (XO (XI (XO XH)))))))
-| Xac -> Npos (XO (XO (XI (XI (XO (XI (XO XH)))))))
-| Xad -> Npos (XI (XO (XI (XI (XO (XI (XO XH)))))))
-| Xae -> Npos (XO (XI (XI (XI (XO (XI (XO XH)))))))
-| Xaf -> Npos (XI (XI (XI (XI (XO (XI (XO XH)))))))
-| Xb0 -> Npos (XO (XO (XO (XO (XI (XI (XO XH)))))))
-| Xb1 -> Npos (XI (XO (XO (XO (XI (XI (XO XH)))))))
-| Xb2 -> Npos (XO (XI (XO (XO (XI (XI (XO XH)))))))
-| Xb3 -> Npos (XI (XI (XO (XO (XI (XI (XO XH)))))))
-| Xb4 -> Npos (XO (XO (XI (XO (XI (XI (XO XH)))))))
-| Xb5 -> Npos (XI (XO (XI (XO (XI (XI (XO XH)))))))
-| Xb6 -> Npos (XO (XI (XI (XO (XI (XI (XO XH)))))))
-| Xb7 -> Npos (XI (XI (XI (XO (XI (XI (XO XH)))))))
-| Xb8 -> Npos (XO (XO (XO (XI (XI (XI (XO XH)))))))
-| Xb9 -> Npos (XI (XO (XO (XI (XI (XI (XO XH)))))))
-| Xba -> Npos (XO (XI (XO (XI (XI (XI (XO XH)))))))
-| Xbb -> Npos (XI (XI (XO (XI (XI (XI (XO XH)))))))
-| Xbc -> Npos (XO (XO (XI (XI (XI (XI (XO XH)))))))
-| Xbd -> Npos (XI (XO (XI (XI (XI (XI (XO XH)))))))
-| Xbe -> Npos (XO (XI (XI (XI (XI (XI (XO XH)))))))
-| Xbf -> Npos (XI (XI (XI (XI (XI (XI (XO XH)))))))
-| Xc0 -> Npos (XO (XO (XO (XO (XO (XO (XI XH)))))))
-| Xc1 -> Npos (XI (XO (XO (XO (XO (XO (XI XH)))))))
-| Xc2 -> Npos (XO (XI (XO (XO (XO (XO (XI XH)))))))
-| Xc3 -> Npos (XI (XI (XO (XO (XO (XO (XI XH)))))))
-| Xc4 -> Npos (XO (XO (XI (XO (XO (XO (XI XH)))))))
-| Xc5 -> Npos (XI (XO (XI (XO (XO (XO (XI XH)))))))
-| Xc6 -> Npos (XO (XI (XI (XO (XO (XO (XI XH)))))))
-| Xc7 -> Npos (XI (XI (XI (XO (XO (XO (XI XH)))))))
-| Xc8 -> Npos (XO (XO (XO (XI (XO (XO (XI XH)))))))
-| Xc9 -> Npos (XI (XO (XO (XI (XO (XO (XI XH)))))))
-| Xca -> Npos (XO (XI (XO (XI (XO (XO (XI XH)))))))
-| Xcb -> Npos (XI (XI (XO (XI (XO (XO (XI XH)))))))
-| Xcc -> Npos (XO (XO (XI (XI (XO (XO (XI XH)))))))
-| Xcd -> Npos (XI (XO (XI (XI (XO (XO (XI XH)))))))
-| Xce -> Npos (XO (XI (XI (XI (XO (XO (XI XH)))))))
-| Xcf -> Npos (XI (XI (XI (XI (XO (XO (XI XH)))))))
-| Xd0 -> Npos (XO (XO (XO (XO (XI (XO (XI XH)))))))
-| Xd1 -> Npos (XI (XO (XO (XO (XI (XO (XI XH)))))))
-| Xd2 -> Npos (XO (XI (XO (XO (XI (XO (XI XH)))))))
-| Xd3 -> Npos (XI (XI (XO (XO (XI (XO (XI XH)))))))
-| Xd4 -> Npos (XO (XO (XI (XO (XI (XO (XI XH)))))))
-| Xd5 -> Npos (XI (XO (XI (XO (XI (XO (XI XH)))))))
-| Xd6 -> Npos (XO (XI (XI (XO (XI (XO (XI XH)))))))
-| Xd7 -> Npos (XI (XI (XI (XO (XI (XO (XI XH)))))))
-| Xd8 -> Npos (XO (XO (XO (XI (XI (XO (XI XH)))))))
-| Xd9 -> Npos (XI (XO (XO (XI (XI (XO (XI XH)))))))
-| Xda -> Npos (XO (XI (XO (XI (XI (XO (XI XH)))))))
-| Xdb -> Npos (XI (XI (XO (XI (XI (XO (XI XH)))))))
-| Xdc -> Npos (XO (XO (XI (XI (XI (XO (XI XH)))))))
-| Xdd -> Npos (XI (XO (XI (XI (XI (XO (XI XH)))))))
-| Xde -> Npos (XO (XI (XI (XI (XI (XO (XI XH)))))))
-| Xdf -> Npos (XI (XI (XI (XI (XI (XO (XI XH)))))))
-| Xe0 -> Npos (XO (XO (XO (XO (XO (XI (XI XH)))))))
-| Xe1 -> Npos (XI (XO (XO (XO (XO (XI (XI XH)))))))
-| Xe2 -> Npos (XO (XI (XO (XO (XO (XI (XI XH)))))))
-| Xe3 -> Npos (XI (XI (XO (XO (XO (XI (XI XH)))))))
-| Xe4 -> Npos (XO (XO (XI (XO (XO (XI (XI XH)))))))
-| Xe5 -> Npos (XI (XO (XI (XO (XO (XI (XI XH)))))))
-| Xe6 -> Npos (XO (XI (XI (XO (XO (XI (XI XH)))))))
-| Xe7 -> Npos (XI (XI (XI (XO (XO (XI (XI XH)))))))
-| Xe8 -> Npos (XO (XO (XO (XI (XO (XI (XI XH)))))))
-| Xe9 -> Npos (XI (XO (XO (XI (XO (XI (XI XH)))))))
-| Xea -> Npos (XO (XI (XO (XI (XO (XI (XI XH)))))))
-| Xeb -> Npos (XI (XI (XO (XI (XO (XI (XI XH)))))))
-| Xec -> Npos (XO (XO (XI (XI (XO (XI (XI XH)))))))
-| Xed -> Npos (XI (XO (XI (XI (XO (XI (XI XH)))))))
-| Xee -> Npos (XO (XI (XI (XI (XO (XI (XI XH)))))))
-| Xef -> Npos (XI (XI (XI (XI (XO (XI (XI XH)))))))
-| Xf0 -> Npos (XO (XO (XO (XO (XI (XI (XI XH)))))))
-| Xf1 -> Npos (XI (XO (XO (XO (XI (XI (XI XH)))))))
-| Xf2 -> Npos (XO (XI (XO (XO (XI (XI (XI XH)))))))
-| Xf3 -> Npos (XI (XI (XO (XO (XI (XI (XI XH)))))))
-| Xf4 -> Npos (XO (XO (XI (XO (XI (XI (XI XH)))))))
-| Xf5 -> Npos (XI (XO (XI (XO (XI (XI (XI XH)))))))
-| Xf6 -> Npos (XO (XI (XI (XO (XI (XI (XI XH)))))))
-| Xf7 -> Npos (XI (XI (XI (XO (XI (XI (XI XH)))))))
-| Xf8 -> Npos (XO (XO (XO (XI (XI (XI (XI XH)))))))
-| Xf9 -> Npos (XI (XO (XO (XI (XI (XI (XI XH)))))))
-| Xfa -> Npos (XO (XI (XO (XI (XI (XI (XI XH)))))))
-| Xfb -> Npos (XI (XI (XO (XI (XI (XI (XI XH)))))))
-| Xfc -> Npos (XO (XO (XI (XI (XI (XI (XI XH)))))))
-| Xfd -> Npos (XI (XO (XI (XI (XI (XI (XI XH)))))))
-| Xfe -> Npos (XO (XI (XI (XI (XI (XI (XI XH)))))))
-| Xff -> Npos (XI (XI (XI (XI (XI (XI (XI XH)))))))
+| '\x00' -> N0
+| '\x01' -> Npos XH
+| '\x02' -> Npos (XO XH)
+| '\x03' -> Npos (XI XH)
+| '\x04' -> Npos (XO (XO XH))
+| '\x05' -> Npos (XI (XO XH))
+| '\x06' -> Npos (XO (XI XH))
+| '\x07' -> Npos (XI (XI XH))
+| '\x08' -> Npos (XO (XO (XO XH)))
+| '\t' -> Npos (XI (XO (XO XH)))
+| '\n' -> Npos (XO (XI (XO XH)))
+| '\x0b' -> Npos (XI (XI (XO XH)))
+| '\x0c' -> Npos (XO (XO (XI XH)))
+| '\r' -> Npos (XI (XO (XI XH)))
+| '\x0e' -> Npos (XO (XI (XI XH)))
+| '\x0f' -> Npos (XI (XI (XI XH)))
+| '\x10' -> Npos (XO (XO (XO (XO XH))))
+| '\x11' -> Npos (XI (XO (XO (XO XH))))
+| '\x12' -> Npos (XO (XI (XO (XO XH))))
+| '\x13' -> Npos (XI (XI (XO (XO XH))))
+| '\x14' -> Npos (XO (XO (XI (XO XH))))
+| '\x15' -> Npos (XI (XO (XI (XO XH))))
+| '\x16' -> Npos (XO (XI (XI (XO XH))))
+| '\x17' -> Npos (XI (XI (XI (XO XH))))
+| '\x18' -> Npos (XO (XO (XO (XI XH))))
+| '\x19' -> Npos (XI (XO (XO (XI XH))))
+| '\x1a' -> Npos (XO (XI (XO (XI XH))))
+| '\x1b' -> Npos (XI (XI (XO (XI XH))))
+| '\x1c' -> Npos (XO (XO (XI (XI XH))))
+| '\x1d' -> Npos (XI (XO (XI (XI XH))))
+| '\x1e' -> Npos (XO (XI (XI (XI XH))))
+| '\x1f' -> Npos (XI (XI (XI (XI XH))))
+| ' ' -> Npos (XO (XO (XO (XO (XO XH)))))
+| '!' -> Npos (XI (XO (XO (XO (XO XH)))))
+| '"' -> Npos (XO (XI (XO (XO (XO XH)))))
+| '#' -> Npos (XI (XI (XO (XO (XO XH)))))
+| '$' -> Npos (XO (XO (XI (XO (XO XH)))))
+| '%' -> Npos (XI (XO (XI (XO (XO XH)))))
+| '&' -> Npos (XO (XI (XI (XO (XO XH)))))
+| '\'' -> Npos (XI (XI (XI (XO (XO XH)))))
+| '(' -> Npos (XO (XO (XO (XI (XO XH)))))
+| ')' -> Npos (XI (XO (XO (XI (XO XH)))))
+| '*' -> Npos (XO (XI (XO (XI (XO XH)))))
+| '+' -> Npos (XI (XI (XO (XI (XO XH)))))
+| ',' -> Npos (XO (XO (XI (XI (XO XH)))))
+| '-' -> Npos (XI (XO (XI (XI (XO XH)))))
+| '.' -> Npos (XO (XI (XI (XI (XO XH)))))
+| '/' -> Npos (XI (XI (XI (XI (XO XH)))))
+| '0' -> Npos (XO (XO (XO (XO (XI XH)))))
+| '1' -> Npos (XI (XO (XO (XO (XI XH)))))
+| '2' -> Npos (XO (XI (XO (XO (XI XH)))))
+| '3' -> Npos (XI (XI (XO (XO (XI XH)))))
+| '4' -> Npos (XO (XO (XI (XO (XI XH)))))
+| '5' -> Npos (XI (XO (XI (XO (XI XH)))))
+| '6' -> Npos (XO (XI (XI (XO (XI XH)))))
+| '7' -> Npos (XI (XI (XI (XO (XI XH)))))
+| '8' -> Npos (XO (XO (XO (XI (XI XH)))))
+| '9' -> Npos (XI (XO (XO (XI (XI XH)))))
+| ':' -> Npos (XO (XI (XO (XI (XI XH)))))
+| ';' -> Npos (XI (XI (XO (XI (XI XH)))))
+| '<' -> Npos (XO (XO (XI (XI (XI XH)))))
+| '=' -> Npos (XI (XO (XI (XI (XI XH)))))
+| '>' -> Npos (XO (XI (XI (XI (XI XH)))))
+| '?' -> Npos (XI (XI (XI (XI (XI XH)))))
+| '@' -> Npos (XO (XO (XO (XO (XO (XO XH))))))
+| 'A' -> Npos (XI (XO (XO (XO (XO (XO XH))))))
+| 'B' -> Npos (XO (XI (XO (XO (XO (XO XH))))))
+| 'C' -> Npos (XI (XI (XO (XO (XO (XO XH))))))
+| 'D' -> Npos (XO (XO (XI (XO (XO (XO XH))))))
+| 'E' -> Npos (XI (XO (XI (XO (XO (XO XH))))))
+| 'F' -> Npos (XO (XI (XI (XO (XO (XO XH))))))
+| 'G' -> Npos (XI (XI (XI (XO (XO (XO XH))))))
+| 'H' -> Npos (XO (XO (XO (XI (XO (XO XH))))))
+| 'I' -> Npos (XI (XO (XO (XI (XO (XO XH))))))
+| 'J' -> Npos (XO (XI (XO (XI (XO (XO XH))))))
+| 'K' -> Npos (XI (XI (XO (XI (XO (XO XH))))))
+| 'L' -> Npos (XO (XO (XI (XI (XO (XO XH))))))
+| 'M' -> Npos (XI (XO (XI (XI (XO (XO XH))))))
+| 'N' -> Npos (XO (XI (XI (XI (XO (XO XH))))))
+| 'O' -> Npos (XI (XI (XI (XI (XO (XO XH))))))
+| 'P' -> Npos (XO (XO (XO (XO (XI (XO XH))))))
+| 'Q' -> Npos (XI (XO (XO (XO (XI (XO XH))))))
+| 'R' -> Npos (XO (XI (XO (XO (XI (XO XH))))))
+| 'S' -> Npos (XI (XI (XO (XO (XI (XO XH))))))
+| 'T' -> Npos (XO (XO (XI (XO (XI (XO XH))))))
+| 'U' -> Npos (XI (XO (XI (XO (XI (XO XH))))))
+| 'V' -> Npos (XO (XI (XI (XO (XI (XO XH))))))
+| 'W' -> Npos (XI (XI (XI (XO (XI (XO XH))))))
+| 'X' -> Npos (XO (XO (XO (XI (XI (XO XH))))))
+| 'Y' -> Npos (XI (XO (XO (XI (XI (XO XH))))))
+| 'Z' -> Npos (XO (XI (XO (XI (XI (XO XH))))))
+| '[' -> Npos (XI (XI (XO (XI (XI (XO XH))))))
+| '\\' -> Npos (XO (XO (XI (XI (XI (XO XH))))))
+| ']' -> Npos (XI (XO (XI (XI (XI (XO XH))))))
+| '^' -> Npos (XO (XI (XI (XI (XI (XO XH))))))
+| '_' -> Npos (XI (XI (XI (XI (XI (XO XH))))))
+| '`' -> Npos (XO (XO (XO (XO (XO (XI XH))))))
+| 'a' -> Npos (XI (XO (XO (XO (XO (XI XH))))))
+| 'b' -> Npos (XO (XI (XO (XO (XO (XI XH))))))
+| 'c' -> Npos (XI (XI (XO (XO (XO (XI XH))))))
+| 'd' -> Npos (XO (XO (XI (XO (XO (XI XH))))))
+| 'e' -> Npos (XI (XO (XI (XO (XO (XI XH))))))
+| 'f' -> Npos (XO (XI (XI (XO (XO (XI XH))))))
+| 'g' -> Npos (XI (XI (XI (XO (XO (XI XH))))))
+| 'h' -> Npos (XO (XO (XO (XI (XO (XI XH))))))
+| 'i' -> Npos (XI (XO (XO (XI (XO (XI XH))))))
+| 'j' -> Npos (XO (XI (XO (XI (XO (XI XH))))))
+| 'k' -> Npos (XI (XI (XO (XI (XO (XI XH))))))
+| 'l' -> Npos (XO (XO (XI (XI (XO (XI XH))))))
+| 'm' -> Npos (XI (XO (XI (XI (XO (XI XH))))))
+| 'n' -> Npos (XO (XI (XI (XI (XO (XI XH))))))
+| 'o' -> Npos (XI (XI (XI (XI (XO (XI XH))))))
+| 'p' -> Npos (XO (XO (XO (XO (XI (XI XH))))))
+| 'q' -> Npos (XI (XO (XO (XO (XI (XI XH))))))
+| 'r' -> Npos (XO (XI (XO (XO (XI (XI XH))))))
+| 's' -> Npos (XI (XI (XO (XO (XI (XI XH))))))
+| 't' -> Npos (XO (XO (XI (XO (XI (XI XH))))))
+| 'u' -> Npos (XI (XO (XI (XO (XI (XI XH))))))
+| 'v' -> Npos (XO (XI (XI (XO (XI (XI XH))))))
+| 'w' -> Npos (XI (XI (XI (XO (XI (XI XH))))))
+| 'x' -> Npos (XO (XO (XO (XI (XI (XI XH))))))
+| 'y' -> Npos (XI (XO (XO (XI (XI (XI XH))))))
+| 'z' -> Npos (XO (XI (XO (XI (XI (XI XH))))))
+| '{' -> Npos (XI (XI (XO (XI (XI (XI XH))))))
+| '|' -> Npos (XO (XO (XI (XI (XI (XI XH))))))
+| '}' -> Npos (XI (XO (XI (XI (XI (XI XH))))))
+| '~' -> Npos (XO (XI (XI (XI (XI (XI XH))))))
+| '\x7f' -> Npos (XI (XI (XI (XI (XI (XI XH))))))
+| '\x80' -> Npos (XO (XO (XO (XO (XO (XO (XO XH)))))))
+| '\x81' -> Npos (XI (XO (XO (XO (XO (XO (XO XH)))))))
+| '\x82' -> Npos (XO (XI (XO (XO (XO (XO (XO XH)))))))
+| '\x83' -> Npos (XI (XI (XO (XO (XO (XO (XO XH)))))))
+| '\x84' -> Npos (XO (XO (XI (XO (XO (XO (XO XH)))))))
+| '\x85' -> Npos (XI (XO (XI (XO (XO (XO (XO XH)))))))
+| '\x86' -> Npos (XO (XI (XI (XO (XO (XO (XO XH)))))))
+| '\x87' -> Npos (XI (XI (XI (XO (XO (XO (XO XH)))))))
+| '\x88' -> Npos (XO (XO (XO (XI (XO (XO (XO XH)))))))
+| '\x89' -> Npos (XI (XO (XO (XI (XO (XO (XO XH)))))))
+| '\x8a' -> Npos (XO (XI (XO (XI (XO (XO (XO XH)))))))
+| '\x8b' -> Npos (XI (XI (XO (XI (XO (XO (XO XH)))))))
+| '\x8c' -> Npos (XO (XO (XI (XI (XO (XO (XO XH)))))))
+| '\x8d' -> Npos (XI (XO (XI (XI (XO (XO (XO XH)))))))
+| '\x8e' -> Npos (XO (XI (XI (XI (XO (XO (XO XH)))))))
+| '\x8f' -> Npos (XI (XI (XI (XI (XO (XO (XO XH)))))))
+| '\x90' -> Npos (XO (XO (XO (XO (XI (XO (XO XH)))))))
+| '\x91' -> Npos (XI (XO (XO (XO (XI (XO (XO XH)))))))
+| '\x92' -> Npos (XO (XI (XO (XO (XI (XO (XO XH)))))))
+| '\x93' -> Npos (XI (XI (XO (XO (XI (XO (XO XH)))))))
+| '\x94' -> Npos (XO (XO (XI (XO (XI (XO (XO XH)))))))
+| '\x95' -> Npos (XI (XO (XI (XO (XI (XO (XO XH)))))))
+| '\x96' -> Npos (XO (XI (XI (XO (XI (XO (XO XH)))))))
+| '\x97' -> Npos (XI (XI (XI (XO (XI (XO (XO XH)))))))
+| '\x98' -> Npos (XO (XO (XO (XI (XI (XO (XO XH)))))))
+| '\x99' -> Npos (XI (XO (XO (XI (XI (XO (XO XH)))))))
+| '\x9a' -> Npos (XO (XI (XO (XI (XI (XO (XO XH)))))))
+| '\x9b' -> Npos (XI (XI (XO (XI (XI (XO (XO XH)))))))
+| '\x9c' -> Npos (XO (XO (XI (XI (XI (XO (XO XH)))))))
+| '\x9d' -> Npos (XI (XO (XI (XI (XI (XO (XO XH)))))))
+| '\x9e' -> Npos (XO (XI (XI (XI (XI (XO (XO XH)))))))
+| '\x9f' -> Npos (XI (XI (XI (XI (XI (XO (XO XH)))))))
+| '\xa0' -> Npos (XO (XO (XO (XO (XO (XI (XO XH)))))))
+| '\xa1' -> Npos (XI (XO (XO (XO (XO (XI (XO XH)))))))
+| '\xa2' -> Npos (XO (XI (XO (XO (XO (XI (XO XH)))))))
+| '\xa3' -> Npos (XI (XI (XO (XO (XO (XI (XO XH)))))))
+| '\xa4' -> Npos (XO (XO (XI (XO (XO (XI (XO XH)))))))
+| '\xa5' -> Npos (XI (XO (XI (XO (XO (XI (XO XH)))))))
+| '\xa6' -> Npos (XO (XI (XI (XO (XO (XI (XO XH)))))))
+| '\xa7' -> Npos (XI (XI (XI (XO (XO (XI (XO XH)))))))
+| '\xa8' -> Npos (XO (XO (XO (XI (XO (XI (XO XH)))))))
+| '\xa9' -> Npos (XI (XO (XO (XI (XO (XI (XO XH)))))))
+| '\xaa' -> Npos (XO (XI (XO (XI (XO (XI (XO XH)))))))
+| '\xab' -> Npos (XI (XI (XO (XI (XO (XI (XO XH)))))))
+| '\xac' -> Npos (XO (XO (XI (XI (XO (XI (XO XH)))))))
+| '\xad' -> Npos (XI (XO (XI (XI (XO (XI (XO XH)))))))
+| '\xae' -> Npos (XO (XI (XI (XI (XO (XI (XO XH)))))))
+| '\xaf' -> Npos (XI (XI (XI (XI (XO (XI (XO XH)))))))
+| '\xb0' -> Npos (XO (XO (XO (XO (XI (XI (XO XH)))))))
+| '\xb1' -> Npos (XI (XO (XO (XO (XI (XI (XO XH)))))))
+| '\xb2' -> Npos (XO (XI (XO (XO (XI (XI (XO XH)))))))
+| '\xb3' -> Npos (XI (XI (XO (XO (XI (XI (XO XH)))))))
+| '\xb4' -> Npos (XO (XO (XI (XO (XI (XI (XO XH)))))))
+| '\xb5' -> Npos (XI (XO (XI (XO (XI (XI (XO XH)))))))
+| '\xb6' -> Npos (XO (XI (XI (XO (XI (XI (XO XH)))))))
+| '\xb7' -> Npos (XI (XI (XI (XO (XI (XI (XO XH)))))))
+| '\xb8' -> Npos (XO (XO (XO (XI (XI (XI (XO XH)))))))
+| '\xb9' -> Npos (XI (XO (XO (XI (XI (XI (XO XH)))))))
+| '\xba' -> Npos (XO (XI (XO (XI (XI (XI (XO XH)))))))
+| '\xbb' -> Npos (XI (XI (XO (XI (XI (XI (XO XH)))))))
+| '\xbc' -> Npos (XO (XO (XI (XI (XI (XI (XO XH)))))))
+| '\xbd' -> Npos (XI (XO (XI (XI (XI (XI (XO XH)))))))
+| '\xbe' -> Npos (XO (XI (XI (XI (XI (XI (XO XH)))))))
+| '\xbf' -> Npos (XI (XI (XI (XI (XI (XI (XO XH)))))))
+| '\xc0' -> Npos (XO (XO (XO (XO (XO (XO (XI XH)))))))
+| '\xc1' -> Npos (XI (XO (XO (XO (XO (XO (XI XH)))))))
+| '\xc2' -> Npos (XO (XI (XO (XO (XO (XO (XI XH)))))))
+| '\xc3' -> Npos (XI (XI (XO (XO (XO (XO (XI XH)))))))
+| '\xc4' -> Npos (XO (XO (XI (XO (XO (XO (XI XH)))))))
+| '\xc5' -> Npos (XI (XO (XI (XO (XO (XO (XI XH)))))))
+| '\xc6' -> Npos (XO (XI (XI (XO (XO (XO (XI XH)))))))
+| '\xc7' -> Npos (XI (XI (XI (XO (XO (XO (XI XH)))))))
+| '\xc8' -> Npos (XO (XO (XO (XI (XO (XO (XI XH)))))))
+| '\xc9' -> Npos (XI (XO (XO (XI (XO (XO (XI XH)))))))
+| '\xca' -> Npos (XO (XI (XO (XI (XO (XO (XI XH)))))))
+| '\xcb' -> Npos (XI (XI (XO (XI (XO (XO (XI XH)))))))
+| '\xcc' -> Npos (XO (XO (XI (XI (XO (XO (XI XH)))))))
+| '\xcd' -> Npos (XI (XO (XI (XI (XO (XO (XI XH)))))))
+| '\xce' -> Npos (XO (XI (XI (XI (XO (XO (XI XH)))))))
+| '\xcf' -> Npos (XI (XI (XI (XI (XO (XO (XI XH)))))))
+| '\xd0' -> Npos (XO (XO (XO (XO (XI (XO (XI XH)))))))
+| '\xd1' -> Npos (XI (XO (XO (XO (XI (XO (XI XH)))))))
+| '\xd2' -> Npos (XO (XI (XO (XO (XI (XO (XI XH)))))))
+| '\xd3' -> Npos (XI (XI (XO (XO (XI (XO (XI XH)))))))
+| '\xd4' -> Npos (XO (XO (XI (XO (XI (XO (XI XH)))))))
+| '\xd5' -> Npos (XI (XO (XI (XO (XI (XO (XI XH)))))))
+| '\xd6' -> Npos (XO (XI (XI (XO (XI (XO (XI XH)))))))
+| '\xd7' -> Npos (XI (XI (XI (XO (XI (XO (XI XH)))))))
+| '\xd8' -> Npos (XO (XO (XO (XI (XI (XO (XI XH)))))))
+| '\xd9' -> Npos (XI (XO (XO (XI (XI (XO (XI XH)))))))
+| '\xda' -> Npos (XO (XI (XO (XI (XI (XO (XI XH)))))))
+| '\xdb' -> Npos (XI (XI (XO (XI (XI (XO (XI XH)))))))
+| '\xdc' -> Npos (XO (XO (XI (XI (XI (XO (XI XH)))))))
+| '\xdd' -> Npos (XI (XO (XI (XI (XI (XO (XI XH)))))))
+| '\xde' -> Npos (XO (XI (XI (XI (XI (XO (XI XH)))))))
+| '\xdf' -> Npos (XI (XI (XI (XI (XI (XO (XI XH)))))))
+| '\xe0' -> Npos (XO (XO (XO (XO (XO (XI (XI XH)))))))
+| '\xe1' -> Npos (XI (XO (XO (XO (XO (XI (XI XH)))))))
+| '\xe2' -> Npos (XO (XI (XO (XO (XO (XI (XI XH)))))))
+| '\xe3' -> Npos (XI (XI (XO (XO (XO (XI (XI XH)))))))
+| '\xe4' -> Npos (XO (XO (XI (XO (XO (XI (XI XH)))))))
+| '\xe5' -> Npos (XI (XO (XI (XO (XO (XI (XI XH)))))))
+| '\xe6' -> Npos (XO (XI (XI (XO (XO (XI (XI XH)))))))
+| '\xe7' -> Npos (XI (XI (XI (XO (XO (XI (XI XH)))))))
+| '\xe8' -> Npos (XO (XO (XO (XI (XO (XI (XI XH)))))))
+| '\xe9' -> Npos (XI (XO (XO (XI (XO (XI (XI XH)))))))
+| '\xea' -> Npos (XO (XI (XO (XI (XO (XI (XI XH)))))))
+| '\xeb' -> Npos (XI (XI (XO (XI (XO (XI (XI XH)))))))
+| '\xec' -> Npos (XO (XO (XI (XI (XO (XI (XI XH)))))))
+| '\xed' -> Npos (XI (XO (XI (XI (XO (XI (XI XH)))))))
+| '\xee' -> Npos (XO (XI (XI (XI (XO (XI (XI XH)))))))
+| '\xef' -> Npos (XI (XI (XI (XI (XO (XI (XI XH)))))))
+| '\xf0' -> Npos (XO (XO (XO (XO (XI (XI (XI XH)))))))
+| '\xf1' -> Npos (XI (XO (XO (XO (XI (XI (XI XH)))))))
+| '\xf2' -> Npos (XO (XI (XO (XO (XI (XI (XI XH)))))))
+| '\xf3' -> Npos (XI (XI (XO (XO (XI (XI (XI XH)))))))
+| '\xf4' -> Npos (XO (XO (XI (XO (XI (XI (XI XH)))))))
+| '\xf5' -> Npos (XI (XO (XI (XO (XI (XI (XI XH)))))))
+| '\xf6' -> Npos (XO (XI (XI (XO (XI (XI (XI XH)))))))
+| '\xf7' -> Npos (XI (XI (XI (XO (XI (XI (XI XH)))))))
+| '\xf8' -> Npos (XO (XO (XO (XI (XI (XI (XI XH)))))))
+| '\xf9' -> Npos (XI (XO (XO (XI (XI (XI (XI XH)))))))
+| '\xfa' -> Npos (XO (XI (XO (XI (XI (XI (XI XH)))))))
+| '\xfb' -> Npos (XI (XI (XO (XI (XI (XI (XI XH)))))))
+| '\xfc' -> Npos (XO (XO (XI (XI (XI (XI (XI XH)))))))
+| '\xfd' -> Npos (XI (XO (XI (XI (XI (XI (XI XH)))))))
+| '\xfe' -> Npos (XO (XI (XI (XI (XI (XI (XI XH)))))))
+| '\xff' -> Npos (XI (XI (XI (XI (XI (XI (XI XH)))))))
 
-(** val of_N0 : n -> byte option **)
+(** val of_N0 : n -> char option **)
 
 let of_N0 = function
-| N0 -> Some X00
+| N0 -> Some '\x00'
 | Npos p ->
   (match p with
    | XI p0 ->
@@ -1724,44 +1063,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xff
+                                 | XH -> Some '\xff'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xbf
+                                 | XH -> Some '\xbf'
                                  | _ -> None)
-                     | XH -> Some X7f)
+                     | XH -> Some '\x7f')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xdf
+                                 | XH -> Some '\xdf'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X9f
+                                 | XH -> Some '\x9f'
                                  | _ -> None)
-                     | XH -> Some X5f)
-                  | XH -> Some X3f)
+                     | XH -> Some '_')
+                  | XH -> Some '?')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xef
+                                 | XH -> Some '\xef'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xaf
+                                 | XH -> Some '\xaf'
                                  | _ -> None)
-                     | XH -> Some X6f)
+                     | XH -> Some 'o')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xcf
+                                 | XH -> Some '\xcf'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X8f
+                                 | XH -> Some '\x8f'
                                  | _ -> None)
-                     | XH -> Some X4f)
-                  | XH -> Some X2f)
-               | XH -> Some X1f)
+                     | XH -> Some 'O')
+                  | XH -> Some '/')
+               | XH -> Some '\x1f')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -1769,45 +1108,45 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf7
+                                 | XH -> Some '\xf7'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb7
+                                 | XH -> Some '\xb7'
                                  | _ -> None)
-                     | XH -> Some X77)
+                     | XH -> Some 'w')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd7
+                                 | XH -> Some '\xd7'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X97
+                                 | XH -> Some '\x97'
                                  | _ -> None)
-                     | XH -> Some X57)
-                  | XH -> Some X37)
+                     | XH -> Some 'W')
+                  | XH -> Some '7')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe7
+                                 | XH -> Some '\xe7'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa7
+                                 | XH -> Some '\xa7'
                                  | _ -> None)
-                     | XH -> Some X67)
+                     | XH -> Some 'g')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc7
+                                 | XH -> Some '\xc7'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X87
+                                 | XH -> Some '\x87'
                                  | _ -> None)
-                     | XH -> Some X47)
-                  | XH -> Some X27)
-               | XH -> Some X17)
-            | XH -> Some X0f)
+                     | XH -> Some 'G')
+                  | XH -> Some '\'')
+               | XH -> Some '\x17')
+            | XH -> Some '\x0f')
          | XO p2 ->
            (match p2 with
             | XI p3 ->
@@ -1817,44 +1156,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xfb
+                                 | XH -> Some '\xfb'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xbb
+                                 | XH -> Some '\xbb'
                                  | _ -> None)
-                     | XH -> Some X7b)
+                     | XH -> Some '{')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xdb
+                                 | XH -> Some '\xdb'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X9b
+                                 | XH -> Some '\x9b'
                                  | _ -> None)
-                     | XH -> Some X5b)
-                  | XH -> Some X3b)
+                     | XH -> Some '[')
+                  | XH -> Some ';')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xeb
+                                 | XH -> Some '\xeb'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xab
+                                 | XH -> Some '\xab'
                                  | _ -> None)
-                     | XH -> Some X6b)
+                     | XH -> Some 'k')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xcb
+                                 | XH -> Some '\xcb'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X8b
+                                 | XH -> Some '\x8b'
                                  | _ -> None)
-                     | XH -> Some X4b)
-                  | XH -> Some X2b)
-               | XH -> Some X1b)
+                     | XH -> Some 'K')
+                  | XH -> Some '+')
+               | XH -> Some '\x1b')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -1862,46 +1201,46 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf3
+                                 | XH -> Some '\xf3'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb3
+                                 | XH -> Some '\xb3'
                                  | _ -> None)
-                     | XH -> Some X73)
+                     | XH -> Some 's')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd3
+                                 | XH -> Some '\xd3'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X93
+                                 | XH -> Some '\x93'
                                  | _ -> None)
-                     | XH -> Some X53)
-                  | XH -> Some X33)
+                     | XH -> Some 'S')
+                  | XH -> Some '3')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe3
+                                 | XH -> Some '\xe3'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa3
+                                 | XH -> Some '\xa3'
                                  | _ -> None)
-                     | XH -> Some X63)
+                     | XH -> Some 'c')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc3
+                                 | XH -> Some '\xc3'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X83
+                                 | XH -> Some '\x83'
                                  | _ -> None)
-                     | XH -> Some X43)
-                  | XH -> Some X23)
-               | XH -> Some X13)
-            | XH -> Some X0b)
-         | XH -> Some X07)
+                     | XH -> Some 'C')
+                  | XH -> Some '#')
+               | XH -> Some '\x13')
+            | XH -> Some '\x0b')
+         | XH -> Some '\x07')
       | XO p1 ->
         (match p1 with
          | XI p2 ->
@@ -1913,44 +1252,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xfd
+                                 | XH -> Some '\xfd'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xbd
+                                 | XH -> Some '\xbd'
                                  | _ -> None)
-                     | XH -> Some X7d)
+                     | XH -> Some '}')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xdd
+                                 | XH -> Some '\xdd'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X9d
+                                 | XH -> Some '\x9d'
                                  | _ -> None)
-                     | XH -> Some X5d)
-                  | XH -> Some X3d)
+                     | XH -> Some ']')
+                  | XH -> Some '=')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xed
+                                 | XH -> Some '\xed'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xad
+                                 | XH -> Some '\xad'
                                  | _ -> None)
-                     | XH -> Some X6d)
+                     | XH -> Some 'm')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xcd
+                                 | XH -> Some '\xcd'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X8d
+                                 | XH -> Some '\x8d'
                                  | _ -> None)
-                     | XH -> Some X4d)
-                  | XH -> Some X2d)
-               | XH -> Some X1d)
+                     | XH -> Some 'M')
+                  | XH -> Some '-')
+               | XH -> Some '\x1d')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -1958,45 +1297,45 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf5
+                                 | XH -> Some '\xf5'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb5
+                                 | XH -> Some '\xb5'
                                  | _ -> None)
-                     | XH -> Some X75)
+                     | XH -> Some 'u')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd5
+                                 | XH -> Some '\xd5'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X95
+                                 | XH -> Some '\x95'
                                  | _ -> None)
-                     | XH -> Some X55)
-                  | XH -> Some X35)
+                     | XH -> Some 'U')
+                  | XH -> Some '5')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe5
+                                 | XH -> Some '\xe5'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa5
+                                 | XH -> Some '\xa5'
                                  | _ -> None)
-                     | XH -> Some X65)
+                     | XH -> Some 'e')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc5
+                                 | XH -> Some '\xc5'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X85
+                                 | XH -> Some '\x85'
                                  | _ -> None)
-                     | XH -> Some X45)
-                  | XH -> Some X25)
-               | XH -> Some X15)
-            | XH -> Some X0d)
+                     | XH -> Some 'E')
+                  | XH -> Some '%')
+               | XH -> Some '\x15')
+            | XH -> Some '\r')
          | XO p2 ->
            (match p2 with
             | XI p3 ->
@@ -2006,44 +1345,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf9
+                                 | XH -> Some '\xf9'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb9
+                                 | XH -> Some '\xb9'
                                  | _ -> None)
-                     | XH -> Some X79)
+                     | XH -> Some 'y')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd9
+                                 | XH -> Some '\xd9'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X99
+                                 | XH -> Some '\x99'
                                  | _ -> None)
-                     | XH -> Some X59)
-                  | XH -> Some X39)
+                     | XH -> Some 'Y')
+                  | XH -> Some '9')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe9
+                                 | XH -> Some '\xe9'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa9
+                                 | XH -> Some '\xa9'
                                  | _ -> None)
-                     | XH -> Some X69)
+                     | XH -> Some 'i')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc9
+                                 | XH -> Some '\xc9'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X89
+                                 | XH -> Some '\x89'
                                  | _ -> None)
-                     | XH -> Some X49)
-                  | XH -> Some X29)
-               | XH -> Some X19)
+                     | XH -> Some 'I')
+                  | XH -> Some ')')
+               | XH -> Some '\x19')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -2051,47 +1390,47 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf1
+                                 | XH -> Some '\xf1'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb1
+                                 | XH -> Some '\xb1'
                                  | _ -> None)
-                     | XH -> Some X71)
+                     | XH -> Some 'q')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd1
+                                 | XH -> Some '\xd1'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X91
+                                 | XH -> Some '\x91'
                                  | _ -> None)
-                     | XH -> Some X51)
-                  | XH -> Some X31)
+                     | XH -> Some 'Q')
+                  | XH -> Some '1')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe1
+                                 | XH -> Some '\xe1'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa1
+                                 | XH -> Some '\xa1'
                                  | _ -> None)
-                     | XH -> Some X61)
+                     | XH -> Some 'a')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc1
+                                 | XH -> Some '\xc1'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X81
+                                 | XH -> Some '\x81'
                                  | _ -> None)
-                     | XH -> Some X41)
-                  | XH -> Some X21)
-               | XH -> Some X11)
-            | XH -> Some X09)
-         | XH -> Some X05)
-      | XH -> Some X03)
+                     | XH -> Some 'A')
+                  | XH -> Some '!')
+               | XH -> Some '\x11')
+            | XH -> Some '\t')
+         | XH -> Some '\x05')
+      | XH -> Some '\x03')
    | XO p0 ->
      (match p0 with
       | XI p1 ->
@@ -2105,44 +1444,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xfe
+                                 | XH -> Some '\xfe'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xbe
+                                 | XH -> Some '\xbe'
                                  | _ -> None)
-                     | XH -> Some X7e)
+                     | XH -> Some '~')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xde
+                                 | XH -> Some '\xde'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X9e
+                                 | XH -> Some '\x9e'
                                  | _ -> None)
-                     | XH -> Some X5e)
-                  | XH -> Some X3e)
+                     | XH -> Some '^')
+                  | XH -> Some '>')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xee
+                                 | XH -> Some '\xee'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xae
+                                 | XH -> Some '\xae'
                                  | _ -> None)
-                     | XH -> Some X6e)
+                     | XH -> Some 'n')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xce
+                                 | XH -> Some '\xce'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X8e
+                                 | XH -> Some '\x8e'
                                  | _ -> None)
-                     | XH -> Some X4e)
-                  | XH -> Some X2e)
-               | XH -> Some X1e)
+                     | XH -> Some 'N')
+                  | XH -> Some '.')
+               | XH -> Some '\x1e')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -2150,45 +1489,45 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf6
+                                 | XH -> Some '\xf6'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb6
+                                 | XH -> Some '\xb6'
                                  | _ -> None)
-                     | XH -> Some X76)
+                     | XH -> Some 'v')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd6
+                                 | XH -> Some '\xd6'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X96
+                                 | XH -> Some '\x96'
                                  | _ -> None)
-                     | XH -> Some X56)
-                  | XH -> Some X36)
+                     | XH -> Some 'V')
+                  | XH -> Some '6')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe6
+                                 | XH -> Some '\xe6'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa6
+                                 | XH -> Some '\xa6'
                                  | _ -> None)
-                     | XH -> Some X66)
+                     | XH -> Some 'f')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc6
+                                 | XH -> Some '\xc6'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X86
+                                 | XH -> Some '\x86'
                                  | _ -> None)
-                     | XH -> Some X46)
-                  | XH -> Some X26)
-               | XH -> Some X16)
-            | XH -> Some X0e)
+                     | XH -> Some 'F')
+                  | XH -> Some '&')
+               | XH -> Some '\x16')
+            | XH -> Some '\x0e')
          | XO p2 ->
            (match p2 with
             | XI p3 ->
@@ -2198,44 +1537,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xfa
+                                 | XH -> Some '\xfa'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xba
+                                 | XH -> Some '\xba'
                                  | _ -> None)
-                     | XH -> Some X7a)
+                     | XH -> Some 'z')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xda
+                                 | XH -> Some '\xda'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X9a
+                                 | XH -> Some '\x9a'
                                  | _ -> None)
-                     | XH -> Some X5a)
-                  | XH -> Some X3a)
+                     | XH -> Some 'Z')
+                  | XH -> Some ':')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xea
+                                 | XH -> Some '\xea'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xaa
+                                 | XH -> Some '\xaa'
                                  | _ -> None)
-                     | XH -> Some X6a)
+                     | XH -> Some 'j')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xca
+                                 | XH -> Some '\xca'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X8a
+                                 | XH -> Some '\x8a'
                                  | _ -> None)
-                     | XH -> Some X4a)
-                  | XH -> Some X2a)
-               | XH -> Some X1a)
+                     | XH -> Some 'J')
+                  | XH -> Some '*')
+               | XH -> Some '\x1a')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -2243,46 +1582,46 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf2
+                                 | XH -> Some '\xf2'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb2
+                                 | XH -> Some '\xb2'
                                  | _ -> None)
-                     | XH -> Some X72)
+                     | XH -> Some 'r')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd2
+                                 | XH -> Some '\xd2'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X92
+                                 | XH -> Some '\x92'
                                  | _ -> None)
-                     | XH -> Some X52)
-                  | XH -> Some X32)
+                     | XH -> Some 'R')
+                  | XH -> Some '2')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe2
+                                 | XH -> Some '\xe2'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa2
+                                 | XH -> Some '\xa2'
                                  | _ -> None)
-                     | XH -> Some X62)
+                     | XH -> Some 'b')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc2
+                                 | XH -> Some '\xc2'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X82
+                                 | XH -> Some '\x82'
                                  | _ -> None)
-                     | XH -> Some X42)
-                  | XH -> Some X22)
-               | XH -> Some X12)
-            | XH -> Some X0a)
-         | XH -> Some X06)
+                     | XH -> Some 'B')
+                  | XH -> Some '"')
+               | XH -> Some '\x12')
+            | XH -> Some '\n')
+         | XH -> Some '\x06')
       | XO p1 ->
         (match p1 with
          | XI p2 ->
@@ -2294,44 +1633,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xfc
+                                 | XH -> Some '\xfc'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xbc
+                                 | XH -> Some '\xbc'
                                  | _ -> None)
-                     | XH -> Some X7c)
+                     | XH -> Some '|')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xdc
+                                 | XH -> Some '\xdc'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X9c
+                                 | XH -> Some '\x9c'
                                  | _ -> None)
-                     | XH -> Some X5c)
-                  | XH -> Some X3c)
+                     | XH -> Some '\\')
+                  | XH -> Some '<')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xec
+                                 | XH -> Some '\xec'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xac
+                                 | XH -> Some '\xac'
                                  | _ -> None)
-                     | XH -> Some X6c)
+                     | XH -> Some 'l')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xcc
+                                 | XH -> Some '\xcc'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X8c
+                                 | XH -> Some '\x8c'
                                  | _ -> None)
-                     | XH -> Some X4c)
-                  | XH -> Some X2c)
-               | XH -> Some X1c)
+                     | XH -> Some 'L')
+                  | XH -> Some ',')
+               | XH -> Some '\x1c')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -2339,45 +1678,45 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf4
+                                 | XH -> Some '\xf4'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb4
+                                 | XH -> Some '\xb4'
                                  | _ -> None)
-                     | XH -> Some X74)
+                     | XH -> Some 't')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd4
+                                 | XH -> Some '\xd4'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X94
+                                 | XH -> Some '\x94'
                                  | _ -> None)
-                     | XH -> Some X54)
-                  | XH -> Some X34)
+                     | XH -> Some 'T')
+                  | XH -> Some '4')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe4
+                                 | XH -> Some '\xe4'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa4
+                                 | XH -> Some '\xa4'
                                  | _ -> None)
-                     | XH -> Some X64)
+                     | XH -> Some 'd')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc4
+                                 | XH -> Some '\xc4'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X84
+                                 | XH -> Some '\x84'
                                  | _ -> None)
-                     | XH -> Some X44)
-                  | XH -> Some X24)
-               | XH -> Some X14)
-            | XH -> Some X0c)
+                     | XH -> Some 'D')
+                  | XH -> Some '$')
+               | XH -> Some '\x14')
+            | XH -> Some '\x0c')
          | XO p2 ->
            (match p2 with
             | XI p3 ->
@@ -2387,44 +1726,44 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf8
+                                 | XH -> Some '\xf8'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb8
+                                 | XH -> Some '\xb8'
                                  | _ -> None)
-                     | XH -> Some X78)
+                     | XH -> Some 'x')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd8
+                                 | XH -> Some '\xd8'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X98
+                                 | XH -> Some '\x98'
                                  | _ -> None)
-                     | XH -> Some X58)
-                  | XH -> Some X38)
+                     | XH -> Some 'X')
+                  | XH -> Some '8')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe8
+                                 | XH -> Some '\xe8'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa8
+                                 | XH -> Some '\xa8'
                                  | _ -> None)
-                     | XH -> Some X68)
+                     | XH -> Some 'h')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc8
+                                 | XH -> Some '\xc8'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X88
+                                 | XH -> Some '\x88'
                                  | _ -> None)
-                     | XH -> Some X48)
-                  | XH -> Some X28)
-               | XH -> Some X18)
+                     | XH -> Some 'H')
+                  | XH -> Some '(')
+               | XH -> Some '\x18')
             | XO p3 ->
               (match p3 with
                | XI p4 ->
@@ -2432,107 +1771,90 @@ let of_N0 = function
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xf0
+                                 | XH -> Some '\xf0'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xb0
+                                 | XH -> Some '\xb0'
                                  | _ -> None)
-                     | XH -> Some X70)
+                     | XH -> Some 'p')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xd0
+                                 | XH -> Some '\xd0'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X90
+                                 | XH -> Some '\x90'
                                  | _ -> None)
-                     | XH -> Some X50)
-                  | XH -> Some X30)
+                     | XH -> Some 'P')
+                  | XH -> Some '0')
                | XO p4 ->
                  (match p4 with
                   | XI p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xe0
+                                 | XH -> Some '\xe0'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some Xa0
+                                 | XH -> Some '\xa0'
                                  | _ -> None)
-                     | XH -> Some X60)
+                     | XH -> Some '`')
                   | XO p5 ->
                     (match p5 with
                      | XI p6 -> (match p6 with
-                                 | XH -> Some Xc0
+                                 | XH -> Some '\xc0'
                                  | _ -> None)
                      | XO p6 -> (match p6 with
-                                 | XH -> Some X80
+                                 | XH -> Some '\x80'
                                  | _ -> None)
-                     | XH -> Some X40)
-                  | XH -> Some X20)
-               | XH -> Some X10)
-            | XH -> Some X08)
-         | XH -> Some X04)
-      | XH -> Some X02)
-   | XH -> Some X01)
+                     | XH -> Some '@')
+                  | XH -> Some ' ')
+               | XH -> Some '\x10')
+            | XH -> Some '\x08')
+         | XH -> Some '\x04')
+      | XH -> Some '\x02')
+   | XH -> Some '\x01')
 
-type ascii =
-| Ascii of bool * bool * bool * bool * bool * bool * bool * bool
-
-(** val byte_of_ascii : ascii -> byte **)
-
-let byte_of_ascii = function
-| Ascii (b0, b1, b2, b3, b4, b5, b6, b7) ->
-  of_bits (Pair (b0, (Pair (b1, (Pair (b2, (Pair (b3, (Pair (b4, (Pair (b5,
-    (Pair (b6, b7))))))))))))))
-
-type string =
-| EmptyString
-| String of ascii * string
-
-(** val list_ascii_of_string : string -> ascii list **)
+(** val list_ascii_of_string : char list -> char list **)
 
 let rec list_ascii_of_string = function
-| EmptyString -> Nil
-| String (ch0, s0) -> Cons (ch0, (list_ascii_of_string s0))
+| [] -> Nil
+| ch0::s0 -> Cons (ch0, (list_ascii_of_string s0))
 
-(** val list_byte_of_string : string -> byte list **)
+(** val list_byte_of_string : char list -> char list **)
 
 let list_byte_of_string s =
-  map byte_of_ascii (list_ascii_of_string s)
+  map (fun x -> x) (list_ascii_of_string s)
 
-(** val np_total : n -> byte **)
+(** val np_total : n -> char **)
 
 let np_total np =
-  let o = of_N0 np in
-  (match o with
-   | Some a -> a
-   | None -> assert false (* absurd case *))
+  let o = of_N0 np in (match o with
+                       | Some a -> a
+                       | None -> assert false (* absurd case *))
 
 (** val log256 : n -> n **)
 
 let log256 n0 =
   N.div (N.log2 n0) (Npos (XO (XO (XO XH))))
 
-(** val byte_list_from_N_fuel : nat -> n -> byte list **)
+(** val byte_list_from_N_fuel : nat -> n -> char list **)
 
 let rec byte_list_from_N_fuel n0 up =
   match n0 with
   | O ->
-    Cons
-      ((np_total
-         (N.modulo up (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH))))))))))),
+    Cons ((np_total (N.modulo up (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH))))))))))),
       Nil)
   | S n' ->
     let r = N.modulo up (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH))))))))) in
     let t = N.div up (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH))))))))) in
     Cons ((np_total r), (byte_list_from_N_fuel n' t))
 
-(** val byte_list_from_N : n -> byte list **)
+(** val byte_list_from_N : n -> char list **)
 
 let byte_list_from_N np =
   byte_list_from_N_fuel (N.to_nat (log256 np)) np
 
-(** val big_endien_list_N : n -> byte list **)
+(** val big_endien_list_N : n -> char list **)
 
 let big_endien_list_N np =
   rev (byte_list_from_N np)
@@ -2595,30 +1917,27 @@ let ch x y z0 =
 (** val maj : n -> n -> n -> n **)
 
 let maj x y z0 =
-  bitwise_xor (bitwise_xor (bitwise_and x y) (bitwise_and x z0))
-    (bitwise_and y z0)
+  bitwise_xor (bitwise_xor (bitwise_and x y) (bitwise_and x z0)) (bitwise_and y z0)
 
 (** val sigma_UU2080_ : n -> n **)
 
 let sigma_UU2080_ x =
-  bitwise_xor
-    (bitwise_xor (rOTR (Npos (XO XH)) x) (rOTR (Npos (XI (XO (XI XH)))) x))
+  bitwise_xor (bitwise_xor (rOTR (Npos (XO XH)) x) (rOTR (Npos (XI (XO (XI XH)))) x))
     (rOTR (Npos (XO (XI (XI (XO XH))))) x)
 
 (** val sigma_UU2081_ : n -> n **)
 
 let sigma_UU2081_ x =
   bitwise_xor
-    (bitwise_xor (rOTR (Npos (XO (XI XH))) x)
-      (rOTR (Npos (XI (XI (XO XH)))) x))
+    (bitwise_xor (rOTR (Npos (XO (XI XH))) x) (rOTR (Npos (XI (XI (XO XH)))) x))
     (rOTR (Npos (XI (XO (XO (XI XH))))) x)
 
 (** val sigma_UU2080_0 : n -> n **)
 
 let sigma_UU2080_0 x =
   bitwise_xor
-    (bitwise_xor (rOTR (Npos (XI (XI XH))) x)
-      (rOTR (Npos (XO (XI (XO (XO XH))))) x)) (sHR (Npos (XI XH)) x)
+    (bitwise_xor (rOTR (Npos (XI (XI XH))) x) (rOTR (Npos (XO (XI (XO (XO XH))))) x))
+    (sHR (Npos (XI XH)) x)
 
 (** val sigma_UU2081_0 : n -> n **)
 
@@ -2630,202 +1949,171 @@ let sigma_UU2081_0 x =
 (** val h_UU2080_ : n list **)
 
 let h_UU2080_ =
-  Cons ((Npos (XI (XI (XI (XO (XO (XI (XI (XO (XO (XI (XI (XO (XO (XI (XI (XI
-    (XI (XO (XO (XI (XO (XO (XO (XO (XO (XI (XO (XI (XO (XI
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XO
-    (XO (XI (XO (XI (XI (XI (XO (XI (XO (XI (XI (XI (XI (XO (XO (XI (XI (XO
-    (XI (XI (XO (XI (XI (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XI (XO (XO (XI (XI (XI (XO (XI (XI (XO (XO (XI (XI (XI (XI
-    (XO (XI (XI (XI (XO (XI (XI (XO (XO (XO (XI (XI (XI
-    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XI (XI
-    (XO (XO (XI (XO (XI (XO (XI (XI (XI (XI (XI (XI (XI (XI (XO (XO (XI (XO
-    (XI (XO (XI (XO (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XI (XI (XI (XI (XI (XO (XO (XI (XO (XO (XI (XO (XI (XO
-    (XO (XI (XI (XI (XO (XO (XO (XO (XI (XO (XO (XO (XI (XO
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI (XO (XO
-    (XO (XI (XO (XO (XO (XI (XO (XI (XI (XO (XI (XO (XI (XO (XO (XO (XO (XO
-    (XI (XI (XO (XI (XI (XO (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XO (XI (XO (XI (XO (XI (XI (XO (XO (XI (XI (XO (XI (XI
-    (XI (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI (XI
-    XH))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XI (XI (XO (XO
-    (XO (XI (XO (XI (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI
-    (XI (XO (XI (XI (XO XH))))))))))))))))))))))))))))))), Nil)))))))))))))))
+  Cons ((Npos (XI (XI (XI (XO (XO (XI (XI (XO (XO (XI (XI (XO (XO (XI (XI (XI (XI (XO
+    (XO (XI (XO (XO (XO (XO (XO (XI (XO (XI (XO (XI XH))))))))))))))))))))))))))))))),
+    (Cons ((Npos (XI (XO (XI (XO (XO (XO (XO (XI (XO (XI (XI (XI (XO (XI (XO (XI (XI (XI
+    (XI (XO (XO (XI (XI (XO (XI (XI (XO (XI (XI (XI (XO
+    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XO (XI (XI (XI (XO (XI
+    (XI (XO (XO (XI (XI (XI (XI (XO (XI (XI (XI (XO (XI (XI (XO (XO (XO (XI (XI (XI
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XI (XI (XO (XO (XI
+    (XO (XI (XO (XI (XI (XI (XI (XI (XI (XI (XI (XO (XO (XI (XO (XI (XO (XI (XO (XO (XI
+    (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XI (XI (XI (XI (XO
+    (XO (XI (XO (XO (XI (XO (XI (XO (XO (XI (XI (XI (XO (XO (XO (XO (XI (XO (XO (XO (XI
+    (XO XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI (XO (XO (XO (XI
+    (XO (XO (XO (XI (XO (XI (XI (XO (XI (XO (XI (XO (XO (XO (XO (XO (XI (XI (XO (XI (XI
+    (XO (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XO (XI (XO
+    (XI (XI (XO (XO (XI (XI (XO (XI (XI (XI (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI (XI
+    XH))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XI (XI (XO (XO (XO (XI
+    (XO (XI (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI (XI (XO (XI (XI (XO
+    XH))))))))))))))))))))))))))))))), Nil)))))))))))))))
 
 (** val k : n list **)
 
 let k =
-  Cons ((Npos (XO (XO (XO (XI (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI (XO (XO
-    (XO (XI (XO (XI (XO (XO (XO (XI (XO (XI (XO (XO (XO (XO
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XI (XO
-    (XO (XI (XO (XO (XI (XO (XO (XO (XI (XO (XI (XI (XI (XO (XI (XI (XO (XO
-    (XI (XO (XO (XO (XI (XI XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XI (XI (XI (XI (XO (XO (XI (XI (XI (XI (XO (XI (XI (XI (XI (XI (XO (XO
+  Cons ((Npos (XO (XO (XO (XI (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI (XO (XO (XO (XI
+    (XO (XI (XO (XO (XO (XI (XO (XI (XO (XO (XO (XO XH))))))))))))))))))))))))))))))),
+    (Cons ((Npos (XI (XO (XO (XO (XI (XO (XO (XI (XO (XO (XI (XO (XO (XO (XI (XO (XI (XI
+    (XI (XO (XI (XI (XO (XO (XI (XO (XO (XO (XI (XI XH))))))))))))))))))))))))))))))),
+    (Cons ((Npos (XI (XI (XI (XI (XO (XO (XI (XI (XI (XI (XO (XI (XI (XI (XI (XI (XO (XO
     (XO (XO (XO (XO (XI (XI (XI (XO (XI (XO (XI (XI (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XI
-    (XO (XI (XI (XI (XO (XI (XI (XO (XI (XI (XI (XO (XI (XO (XI (XI (XO (XI
-    (XI (XO (XO (XI (XO (XI (XI XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XO (XI (XI (XO (XI (XO (XO (XI (XO (XO (XO (XO (XI (XI
-    (XO (XI (XI (XO (XI (XO (XI (XO (XI (XO (XO (XI (XI
-    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XI (XI
-    (XI (XI (XI (XO (XO (XO (XI (XO (XO (XO (XI (XO (XO (XO (XI (XI (XI (XI
-    (XI (XO (XO (XI (XI (XO XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XO (XI (XO (XO (XI (XO (XI (XO (XI (XO (XO (XO (XO (XO (XI (XI (XI
-    (XI (XI (XI (XI (XO (XO (XO (XI (XO (XO (XI (XO (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XI (XO
-    (XI (XI (XO (XI (XI (XI (XI (XO (XI (XO (XO (XO (XI (XI (XI (XO (XO (XO
-    (XI (XI (XO (XI (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XO (XO (XI (XI (XO (XO (XI (XO (XI (XO (XI (XO (XI (XO (XI
-    (XI (XI (XI (XO (XO (XO (XO (XO (XO (XO (XO (XI (XI (XO (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XO (XO
-    (XO (XO (XI (XI (XO (XI (XI (XO (XI (XO (XI (XI (XO (XO (XO (XO (XO (XI
-    (XO (XI (XO (XO XH))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI
-    (XI (XI (XI (XO (XI (XI (XO (XI (XO (XO (XO (XO (XI (XI (XO (XO (XO (XI
-    (XI (XO (XO (XO (XO (XI (XO (XO XH)))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI (XI (XI (XI (XO
-    (XO (XO (XI (XI (XO (XO (XO (XO (XI (XO (XI (XO (XI (XO
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XI (XI
-    (XI (XO (XI (XO (XI (XI (XI (XO (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI
-    (XO (XI (XO (XO (XI (XI XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XI (XI (XI (XI (XI (XI (XI (XI (XO (XO (XO (XI (XI (XO (XI (XO (XI
-    (XI (XI (XI (XO (XI (XI (XO (XO (XO (XO (XO (XO (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XO (XI
-    (XO (XI (XO (XI (XI (XO (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI
-    (XI (XI (XO (XI (XI (XO (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XO (XI (XO (XI (XI (XI (XO (XI (XO (XO (XO (XI (XI (XI (XI
-    (XI (XI (XO (XI (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XO (XO
-    (XI (XI (XI (XO (XO (XI (XO (XI (XI (XO (XI (XI (XO (XI (XI (XO (XO (XI
-    (XO (XO (XI (XO (XO (XI (XI XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XI (XI (XO (XO (XO (XO (XI (XI (XI (XI (XO (XO (XO (XI (XO
-    (XO (XI (XI (XI (XI (XI (XO (XI (XI (XI (XI (XI (XO (XI (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XO (XO (XO
-    (XI (XI (XI (XO (XI (XI (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XI
-    (XI (XI (XI XH)))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI
-    (XO (XO (XI (XI (XI (XO (XO (XO (XO (XI (XO (XI (XO (XO (XI (XI (XO (XO
-    (XO (XO (XO (XO (XI (XO (XO XH)))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XI (XI (XO (XI (XI (XO (XO (XO (XI (XI (XO (XI (XO (XO
-    (XI (XO (XO (XI (XO (XI (XI (XI (XI (XO (XI (XI (XO
-    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XO (XI
-    (XO (XI (XO (XO (XI (XO (XO (XO (XO (XI (XO (XO (XI (XO (XI (XI (XI (XO
-    (XO (XI (XO (XI (XO (XO XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XO (XI (XI (XI (XO (XI (XI (XI (XO (XO (XI (XO (XI (XO (XI (XO (XO
-    (XO (XO (XI (XI (XO (XI (XO (XO (XI (XI (XI (XO
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XI (XO
-    (XI (XI (XO (XO (XO (XI (XO (XO (XO (XI (XI (XO (XO (XI (XI (XI (XI (XI
-    (XO (XI (XI (XO (XI (XI XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XI (XO (XO (XI (XO (XI (XO (XI (XO (XO (XO (XI (XO (XI (XO (XO (XI
-    (XI (XI (XI (XI (XO (XO (XO (XO (XO (XI (XI (XO (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XI (XO (XI
-    (XI (XO (XO (XI (XI (XO (XO (XO (XI (XI (XI (XO (XO (XO (XI (XI (XO (XO
-    (XO (XO (XO (XI (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XO (XO (XI (XO (XO (XI (XI (XI (XI (XI (XO (XO (XI (XO (XO
-    (XI (XI (XO (XO (XO (XO (XO (XO (XO (XO (XO (XO (XI (XI (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XO (XO
-    (XI (XI (XI (XI (XI (XI (XI (XI (XI (XO (XI (XO (XO (XI (XI (XO (XI (XO
-    (XI (XI (XI (XI (XI (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XO (XO (XI (XI (XI (XI (XI (XI (XO (XI (XO (XO (XO (XO
-    (XO (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI (XO (XO (XO (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XO (XO
-    (XI (XO (XI (XO (XO (XO (XI (XO (XO (XI (XI (XI (XI (XO (XO (XI (XO (XI
-    (XI (XO (XI (XO (XI (XO (XI XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XO (XO (XO (XI (XO (XI (XO (XI (XI (XO (XO (XO (XI (XI (XO
-    (XO (XI (XO (XI (XO (XO (XI (XI (XO (XI XH))))))))))))))))))))))))))),
-    (Cons ((Npos (XI (XI (XI (XO (XO (XI (XI (XO (XI (XO (XO (XI (XO (XI (XO
-    (XO (XI (XO (XO (XI (XO (XI (XO (XO (XO (XO (XI (XO
-    XH))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XO (XO
-    (XI (XO (XI (XO (XI (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI (XO (XI (XI
-    (XI (XI (XO (XO XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO
-    (XO (XI (XI (XI (XO (XO (XI (XO (XO (XO (XO (XI (XO (XO (XI (XI (XO (XI
-    (XI (XO (XO (XO (XO (XI (XI (XI (XO XH)))))))))))))))))))))))))))))),
-    (Cons ((Npos (XO (XO (XI (XI (XI (XI (XI (XI (XI (XO (XI (XI (XO (XI (XI
-    (XO (XO (XO (XI (XI (XO (XI (XO (XO (XI (XO (XI (XI (XO (XO
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XI (XO
-    (XO (XO (XI (XO (XI (XI (XO (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XO
-    (XI (XI (XO (XO (XI (XO XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XO (XI (XO (XI (XO (XI (XO (XI (XI (XO (XO (XI (XI (XI (XO (XO (XI
-    (XO (XI (XO (XO (XO (XO (XI (XO (XI (XO (XO (XI
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XI (XI
-    (XO (XI (XO (XI (XO (XI (XO (XO (XO (XO (XO (XI (XO (XI (XO (XI (XI (XO
-    (XO (XI (XI (XO (XI (XI XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XI (XI (XI (XO (XI (XO (XO (XI (XO (XO (XI (XO (XO (XI (XI (XO (XI
-    (XO (XO (XO (XO (XI (XI (XI (XO (XO (XO (XO (XO (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XO
-    (XO (XI (XO (XO (XI (XI (XO (XI (XO (XO (XO (XI (XO (XO (XI (XI (XI (XO
-    (XO (XI (XO (XO (XI (XO (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XO (XO (XO (XO (XI (XO (XI (XO (XO (XO (XI (XO (XI (XI (XI
-    (XI (XI (XI (XI (XI (XI (XO (XI (XO (XI (XO (XO (XO (XI (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XO (XO
-    (XI (XO (XO (XI (XI (XO (XO (XI (XI (XO (XO (XI (XO (XI (XI (XO (XO (XO
-    (XO (XO (XO (XI (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI (XO (XI (XO (XO (XO (XI
-    (XI (XI (XO (XI (XO (XO (XI (XO (XO (XI (XO (XO (XO (XO (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XO (XI
-    (XO (XI (XI (XO (XO (XO (XI (XO (XI (XO (XO (XO (XI (XI (XO (XI (XI (XO
-    (XI (XI (XI (XO (XO (XO (XI XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XO (XI (XO (XI (XI (XI
-    (XO (XI (XO (XO (XI (XO (XO (XI (XI (XO (XO (XO (XI (XO (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XO (XI
-    (XO (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XO (XO (XI (XI (XO (XO (XI
-    (XO (XI (XI (XO (XI (XO (XI XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XO (XI (XO (XO (XO (XO (XI (XI (XO (XI (XO (XI (XI (XO (XO
-    (XO (XI (XI (XI (XO (XO (XO (XO (XO (XO (XI (XO (XI (XI (XI
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XO (XI (XI
-    (XI (XO (XO (XO (XO (XO (XO (XI (XO (XI (XO (XI (XO (XI (XO (XI (XI (XO
-    (XO (XO (XO (XO XH))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI
-    (XO (XI (XO (XO (XO (XI (XO (XO (XO (XO (XO (XI (XI (XO (XO (XI (XO (XO
-    (XI (XO (XI (XI (XO (XO (XI XH))))))))))))))))))))))))))))), (Cons ((Npos
-    (XO (XO (XO (XI (XO (XO (XO (XO (XO (XO (XI (XI (XO (XI (XI (XO (XI (XI
-    (XI (XO (XI (XI (XO (XO (XO (XI (XI (XI XH))))))))))))))))))))))))))))),
-    (Cons ((Npos (XO (XO (XI (XI (XO (XO (XI (XO (XI (XI (XI (XO (XI (XI (XI
-    (XO (XO (XO (XO (XI (XO (XO (XI (XO (XI (XI (XI (XO (XO
-    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XI (XI
-    (XO (XI (XO (XO (XI (XI (XI (XI (XO (XI (XO (XO (XO (XO (XI (XI (XO (XI
-    (XO (XO (XI (XO (XI XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI
-    (XI (XO (XO (XI (XI (XO (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XO (XI
-    (XI (XI (XO (XO (XO (XI (XO (XO (XI (XI XH)))))))))))))))))))))))))))))),
-    (Cons ((Npos (XO (XI (XO (XI (XO (XO (XI (XO (XO (XI (XO (XI (XO (XI (XO
-    (XI (XO (XO (XO (XI (XI (XO (XI (XI (XO (XI (XI (XI (XO (XO
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XI (XO (XO
-    (XI (XO (XO (XI (XO (XI (XO (XO (XI (XI (XO (XO (XI (XI (XI (XO (XO (XI
-    (XI (XI (XO (XI (XI (XO XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XI (XI (XO (XO (XI (XI (XI (XI (XI (XI (XI (XI (XO (XI (XI (XO (XO (XI
-    (XI (XI (XO (XI (XO (XO (XO (XO (XO (XI (XO (XI
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XI (XO (XI
-    (XI (XI (XO (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI (XI (XO (XO (XO (XI
-    (XO (XO (XI (XO (XI (XI XH))))))))))))))))))))))))))))))), (Cons ((Npos
-    (XI (XI (XI (XI (XO (XI (XI (XO (XI (XI (XO (XO (XO (XI (XI (XO (XI (XO
-    (XI (XO (XO (XI (XO (XI (XO (XO (XO (XI (XI (XI
-    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XI (XO
-    (XO (XO (XO (XO (XO (XI (XI (XI (XI (XO (XO (XO (XO (XI (XO (XO (XI (XI
-    (XO (XO (XI (XO (XO (XO (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XO (XO (XI (XO (XO (XO (XO (XO (XI (XO (XO (XO (XO (XO (XO
-    (XI (XI (XI (XO (XO (XO (XI (XI (XO (XO (XI (XI (XO (XO (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XI (XI
-    (XI (XI (XI (XI (XI (XI (XI (XI (XI (XI (XO (XI (XI (XI (XI (XI (XO (XI
-    (XO (XO (XO (XO (XI (XO (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XI (XI (XO (XI (XO (XI (XI (XI (XO (XO (XI (XI (XO (XI (XI (XO
-    (XO (XO (XO (XO (XI (XO (XI (XO (XO (XO (XI (XO (XO (XI (XO
-    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XI (XI
-    (XI (XI (XI (XI (XO (XO (XO (XI (XO (XI (XI (XO (XO (XI (XI (XI (XI (XI
-    (XO (XI (XI (XI (XI (XI (XO XH)))))))))))))))))))))))))))))))), (Cons
-    ((Npos (XO (XI (XO (XO (XI (XI (XI (XI (XO (XO (XO (XI (XI (XI (XI (XO
-    (XI (XO (XO (XO (XI (XI (XI (XO (XO (XI (XI (XO (XO (XO (XI
-    XH)))))))))))))))))))))))))))))))),
+    XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XI (XO (XI (XI
+    (XI (XO (XI (XI (XO (XI (XI (XI (XO (XI (XO (XI (XI (XO (XI (XI (XO (XO (XI (XO (XI
+    (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XI (XO (XI (XO
+    (XO (XI (XO (XO (XO (XO (XI (XI (XO (XI (XI (XO (XI (XO (XI (XO (XI (XO (XO (XI (XI
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XI (XI (XI (XI (XI
+    (XO (XO (XO (XI (XO (XO (XO (XI (XO (XO (XO (XI (XI (XI (XI (XI (XO (XO (XI (XI (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XO (XI (XO (XI (XO
+    (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI (XI (XI (XI (XO (XO (XO (XI (XO (XO (XI (XO
+    (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XI (XO (XI (XI
+    (XO (XI (XI (XI (XI (XO (XI (XO (XO (XO (XI (XI (XI (XO (XO (XO (XI (XI (XO (XI (XO
+    (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XI (XI (XO (XO
+    (XI (XO (XI (XO (XI (XO (XI (XO (XI (XI (XI (XI (XO (XO (XO (XO (XO (XO (XO (XO (XI
+    (XI (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XO (XO
+    (XO (XO (XI (XI (XO (XI (XI (XO (XI (XO (XI (XI (XO (XO (XO (XO (XO (XI (XO (XI (XO
+    (XO XH))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XI (XI (XI (XO (XI
+    (XI (XO (XI (XO (XO (XO (XO (XI (XI (XO (XO (XO (XI (XI (XO (XO (XO (XO (XI (XO (XO
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XO (XO (XI (XI (XI
+    (XO (XI (XI (XI (XI (XI (XO (XO (XO (XI (XI (XO (XO (XO (XO (XI (XO (XI (XO (XI (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XI (XI (XI (XO (XI
+    (XO (XI (XI (XI (XO (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI (XO (XI (XO (XO (XI (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XI (XI (XI (XI (XI (XI
+    (XO (XO (XO (XI (XI (XO (XI (XO (XI (XI (XI (XI (XO (XI (XI (XO (XO (XO (XO (XO (XO
+    (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XO (XI (XO (XI
+    (XO (XI (XI (XO (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI (XI (XI (XO (XI (XI
+    (XO (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XI (XI (XI
+    (XO (XI (XO (XO (XO (XI (XI (XI (XI (XI (XI (XO (XI (XI (XO (XO (XI (XI (XO (XO (XO
+    (XO (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XO (XO
+    (XI (XI (XI (XO (XO (XI (XO (XI (XI (XO (XI (XI (XO (XI (XI (XO (XO (XI (XO (XO (XI
+    (XO (XO (XI (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XO (XO
+    (XO (XO (XI (XI (XI (XI (XO (XO (XO (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI (XI (XI
+    (XI (XI (XO (XI (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XO
+    (XO (XO (XI (XI (XI (XO (XI (XI (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XI (XI
+    (XI (XI XH)))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI (XO (XO (XI (XI
+    (XI (XO (XO (XO (XO (XI (XO (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XO (XI (XO (XO
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XI (XO (XI (XI (XO (XO
+    (XO (XI (XI (XO (XI (XO (XO (XI (XO (XO (XI (XO (XI (XI (XI (XI (XO (XI (XI (XO
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XO (XI (XO (XI (XO
+    (XO (XI (XO (XO (XO (XO (XI (XO (XO (XI (XO (XI (XI (XI (XO (XO (XI (XO (XI (XO (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI (XI (XO (XI (XI (XI
+    (XO (XO (XI (XO (XI (XO (XI (XO (XO (XO (XO (XI (XI (XO (XI (XO (XO (XI (XI (XI (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XI (XO (XI (XI (XO
+    (XO (XO (XI (XO (XO (XO (XI (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI (XI (XO (XI (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XO (XI (XO (XI (XO (XI
+    (XO (XO (XO (XI (XO (XI (XO (XO (XI (XI (XI (XI (XI (XO (XO (XO (XO (XO (XI (XI (XO
+    (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XI (XO (XI (XI (XO
+    (XO (XI (XI (XO (XO (XO (XI (XI (XI (XO (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XO
+    (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XI (XO (XO (XI
+    (XI (XI (XI (XI (XO (XO (XI (XO (XO (XI (XI (XO (XO (XO (XO (XO (XO (XO (XO (XO (XO
+    (XI (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XO (XO
+    (XI (XI (XI (XI (XI (XI (XI (XI (XI (XO (XI (XO (XO (XI (XI (XO (XI (XO (XI (XI (XI
+    (XI (XI (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XI
+    (XI (XI (XI (XI (XI (XO (XI (XO (XO (XO (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XI
+    (XI (XO (XO (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO
+    (XO (XO (XI (XO (XI (XO (XO (XO (XI (XO (XO (XI (XI (XI (XI (XO (XO (XI (XO (XI (XI
+    (XO (XI (XO (XI (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO
+    (XO (XI (XO (XI (XO (XI (XI (XO (XO (XO (XI (XI (XO (XO (XI (XO (XI (XO (XO (XI (XI
+    (XO (XI XH))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XO (XI (XI (XO
+    (XI (XO (XO (XI (XO (XI (XO (XO (XI (XO (XO (XI (XO (XI (XO (XO (XO (XO (XI (XO
+    XH))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XO (XO (XI (XO
+    (XI (XO (XI (XO (XO (XO (XO (XI (XI (XI (XO (XI (XI (XO (XI (XI (XI (XI (XO (XO
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XI (XI (XI (XO (XO (XI
+    (XO (XO (XO (XO (XI (XO (XO (XI (XI (XO (XI (XI (XO (XO (XO (XO (XI (XI (XI (XO
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI (XI (XI (XI (XI (XI
+    (XO (XI (XI (XO (XI (XI (XO (XO (XO (XI (XI (XO (XI (XO (XO (XI (XO (XI (XI (XO (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XI (XO (XO (XO (XI
+    (XO (XI (XI (XO (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XO (XI (XI (XO (XO (XI (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XI (XO (XI (XO (XI
+    (XI (XO (XO (XI (XI (XI (XO (XO (XI (XO (XI (XO (XO (XO (XO (XI (XO (XI (XO (XO (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XI (XI (XO (XI (XO
+    (XI (XO (XI (XO (XO (XO (XO (XO (XI (XO (XI (XO (XI (XI (XO (XO (XI (XI (XO (XI (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XI (XO (XI (XO (XO (XI
+    (XO (XO (XI (XO (XO (XI (XI (XO (XI (XO (XO (XO (XO (XI (XI (XI (XO (XO (XO (XO (XO
+    (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XO (XO (XO (XI
+    (XO (XO (XI (XI (XO (XI (XO (XO (XO (XI (XO (XO (XI (XI (XI (XO (XO (XI (XO (XO (XI
+    (XO (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO (XO (XO (XI (XO
+    (XI (XO (XO (XO (XI (XO (XI (XI (XI (XI (XI (XI (XI (XI (XI (XO (XI (XO (XI (XO (XO
+    (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XO (XO
+    (XI (XO (XO (XI (XI (XO (XO (XI (XI (XO (XO (XI (XO (XI (XI (XO (XO (XO (XO (XO (XO
+    (XI (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XO (XI
+    (XI (XI (XO (XI (XI (XO (XI (XO (XO (XO (XI (XI (XI (XO (XI (XO (XO (XI (XO (XO (XI
+    (XO (XO (XO (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO
+    (XO (XI (XO (XI (XI (XO (XO (XO (XI (XO (XI (XO (XO (XO (XI (XI (XO (XI (XI (XO (XI
+    (XI (XI (XO (XO (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XO
+    (XI (XI (XO (XO (XO (XO (XO (XO (XI (XO (XI (XI (XI (XO (XI (XO (XO (XI (XO (XO (XI
+    (XI (XO (XO (XO (XI (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO
+    (XI (XO (XO (XI (XO (XO (XO (XI (XI (XO (XO (XO (XO (XO (XI (XO (XO (XI (XI (XO (XO
+    (XI (XO (XI (XI (XO (XI (XO (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI
+    (XO (XI (XO (XO (XO (XO (XI (XI (XO (XI (XO (XI (XI (XO (XO (XO (XI (XI (XI (XO (XO
+    (XO (XO (XO (XO (XI (XO (XI (XI (XI XH)))))))))))))))))))))))))))))))), (Cons ((Npos
+    (XO (XO (XO (XO (XI (XI (XI (XO (XO (XO (XO (XO (XO (XI (XO (XI (XO (XI (XO (XI (XO
+    (XI (XI (XO (XO (XO (XO (XO XH))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI
+    (XI (XO (XI (XO (XO (XO (XI (XO (XO (XO (XO (XO (XI (XI (XO (XO (XI (XO (XO (XI (XO
+    (XI (XI (XO (XO (XI XH))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XI
+    (XO (XO (XO (XO (XO (XO (XI (XI (XO (XI (XI (XO (XI (XI (XI (XO (XI (XI (XO (XO (XO
+    (XI (XI (XI XH))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XI (XO (XO
+    (XI (XO (XI (XI (XI (XO (XI (XI (XI (XO (XO (XO (XO (XI (XO (XO (XI (XO (XI (XI (XI
+    (XO (XO XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XO (XI (XO (XI (XI (XO
+    (XI (XO (XO (XI (XI (XI (XI (XO (XI (XO (XO (XO (XO (XI (XI (XO (XI (XO (XO (XI (XO
+    (XI XH)))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XI (XI (XO (XI
+    (XO (XO (XI (XI (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XO (XO (XI (XO (XO (XI (XI
+    XH)))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XO (XO (XI (XO (XO
+    (XI (XO (XI (XO (XI (XO (XI (XO (XO (XO (XI (XI (XO (XI (XI (XO (XI (XI (XI (XO (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XI (XO (XO (XI (XO (XO
+    (XI (XO (XI (XO (XO (XI (XI (XO (XO (XI (XI (XI (XO (XO (XI (XI (XI (XO (XI (XI (XO
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XO (XI (XI (XI (XI (XI
+    (XI (XI (XI (XO (XI (XI (XO (XO (XI (XI (XI (XO (XI (XO (XO (XO (XO (XO (XI (XO (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XI (XI (XO (XI (XI (XI (XO
+    (XI (XO (XO (XO (XO (XO (XI (XI (XI (XI (XI (XO (XO (XO (XI (XO (XO (XI (XO (XI (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XI (XO (XI (XI (XO (XI
+    (XI (XO (XO (XO (XI (XI (XO (XI (XO (XI (XO (XO (XI (XO (XI (XO (XO (XO (XI (XI (XI
+    XH))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XI (XO (XI (XO (XO (XO (XO
+    (XO (XO (XI (XI (XI (XI (XO (XO (XO (XO (XI (XO (XO (XI (XI (XO (XO (XI (XO (XO (XO
+    (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XO (XO (XI (XO (XO (XO (XO
+    (XO (XI (XO (XO (XO (XO (XO (XO (XI (XI (XI (XO (XO (XO (XI (XI (XO (XO (XI (XI (XO
+    (XO (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XI (XI (XI (XI
+    (XI (XI (XI (XI (XI (XI (XI (XI (XI (XO (XI (XI (XI (XI (XI (XO (XI (XO (XO (XO (XO
+    (XI (XO (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XO (XI (XO (XI
+    (XI (XI (XO (XO (XI (XI (XO (XI (XI (XO (XO (XO (XO (XO (XI (XO (XI (XO (XO (XO (XI
+    (XO (XO (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XI (XI (XI (XO (XI
+    (XI (XI (XI (XI (XI (XO (XO (XO (XI (XO (XI (XI (XO (XO (XI (XI (XI (XI (XI (XO (XI
+    (XI (XI (XI (XI (XO XH)))))))))))))))))))))))))))))))), (Cons ((Npos (XO (XI (XO (XO
+    (XI (XI (XI (XI (XO (XO (XO (XI (XI (XI (XI (XO (XI (XO (XO (XO (XI (XI (XI (XO (XO
+    (XI (XI (XO (XO (XO (XI XH)))))))))))))))))))))))))))))))),
     Nil)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 
-(** val get_zero_bytes : nat -> byte list **)
+(** val get_zero_bytes : nat -> char list **)
 
 let rec get_zero_bytes = function
 | O -> Nil
-| S v' -> Cons (X00, (get_zero_bytes v'))
+| S v' -> Cons ('\x00', (get_zero_bytes v'))
 
-(** val message_padding : nat -> byte list **)
+(** val message_padding : nat -> char list **)
 
 let message_padding = function
 | O -> Nil
-| S v' -> Cons (X80, (get_zero_bytes v'))
+| S v' -> Cons ('\x80', (get_zero_bytes v'))
 
-(** val append_zero_in_length_byte : byte list -> byte list **)
+(** val append_zero_in_length_byte : char list -> char list **)
 
 let append_zero_in_length_byte lb =
   let nl = length lb in
@@ -2833,14 +2121,14 @@ let append_zero_in_length_byte lb =
   then app (get_zero_bytes (sub (S (S (S (S (S (S (S (S O)))))))) nl)) lb
   else lb
 
-(** val message_length_byte : byte list -> byte list **)
+(** val message_length_byte : char list -> char list **)
 
 let message_length_byte m0 =
   let n0 = N.of_nat (length m0) in
   let mbits = N.mul (Npos (XO (XO (XO XH)))) n0 in
   append_zero_in_length_byte (big_endien_list_N mbits)
 
-(** val prepared_message : byte list -> byte list **)
+(** val prepared_message : char list -> char list **)
 
 let prepared_message m0 =
   let n0 = N.of_nat (length m0) in
@@ -2849,62 +2137,58 @@ let prepared_message m0 =
     Z.to_N
       (Z.modulo
         (Z.sub (Zpos (XO (XO (XO (XO (XO (XO (XI (XI XH)))))))))
-          (Z.add (Z.of_N mbits) (Zpos XH))) (Zpos (XO (XO (XO (XO (XO (XO (XO
-        (XO (XO XH)))))))))))
+          (Z.add (Z.of_N mbits) (Zpos XH))) (Zpos (XO (XO (XO (XO (XO (XO (XO (XO (XO
+        XH)))))))))))
   in
   let wt = N.div (N.add (Npos XH) k0) (Npos (XO (XO (XO XH)))) in
   app m0 (app (message_padding (N.to_nat wt)) (message_length_byte m0))
 
-(** val big_endien_32_bit_to_N : byte -> byte -> byte -> byte -> n **)
+(** val big_endien_32_bit_to_N : char -> char -> char -> char -> n **)
 
 let big_endien_32_bit_to_N a b c d =
   N.add
     (N.mul
       (N.add
         (N.mul
-          (N.add
-            (N.mul (to_N0 a) (Npos (XO (XO (XO (XO (XO (XO (XO (XO
-              XH)))))))))) (to_N0 b)) (Npos (XO (XO (XO (XO (XO (XO (XO (XO
-          XH)))))))))) (to_N0 c)) (Npos (XO (XO (XO (XO (XO (XO (XO (XO
-      XH)))))))))) (to_N0 d)
+          (N.add (N.mul (to_N0 a) (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH))))))))))
+            (to_N0 b)) (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH)))))))))) (to_N0 c))
+      (Npos (XO (XO (XO (XO (XO (XO (XO (XO XH)))))))))) (to_N0 d)
 
-(** val m : byte list -> nat -> nat -> n **)
+(** val m : char list -> nat -> nat -> n **)
 
 let m m0 i j =
   big_endien_32_bit_to_N
     (nth
       (add
-        (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-          (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-          (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+        (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+          (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+          (S (S (S (S (S (S (S (S (S (S (S (S (S
           O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) i)
-        (mul (S (S (S (S O)))) j)) (prepared_message m0) X00)
+        (mul (S (S (S (S O)))) j)) (prepared_message m0) '\x00')
     (nth
       (add
         (add
-          (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-            i) (mul (S (S (S (S O)))) j)) (S O)) (prepared_message m0) X00)
+          (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) i)
+          (mul (S (S (S (S O)))) j)) (S O)) (prepared_message m0) '\x00')
     (nth
       (add
         (add
-          (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-            i) (mul (S (S (S (S O)))) j)) (S (S O))) (prepared_message m0)
-      X00)
+          (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) i)
+          (mul (S (S (S (S O)))) j)) (S (S O))) (prepared_message m0) '\x00')
     (nth
       (add
         (add
-          (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-            O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-            i) (mul (S (S (S (S O)))) j)) (S (S (S O))))
-      (prepared_message m0) X00)
+          (mul (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+            O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) i)
+          (mul (S (S (S (S O)))) j)) (S (S (S O)))) (prepared_message m0) '\x00')
 
 (** val from_n : nat -> nat list **)
 
@@ -2917,32 +2201,30 @@ let rec from_n = function
 let upto_n n0 =
   rev (from_n n0)
 
-(** val w : byte list -> nat -> n list **)
+(** val w : char list -> nat -> n list **)
 
 let w m0 i =
   fold_left (fun acc t ->
     let wtp =
-      if Nat.ltb t (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-           O))))))))))))))))
+      if Nat.ltb t (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))
       then m m0 i t
       else let a = nth (sub t (S (S O))) acc N0 in
            let b = nth (sub t (S (S (S (S (S (S (S O)))))))) acc N0 in
            let c =
-             nth
-               (sub t (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-                 O)))))))))))))))) acc N0
+             nth (sub t (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O))))))))))))))))
+               acc N0
            in
            let d =
              nth
-               (sub t (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-                 O))))))))))))))))) acc N0
+               (sub t (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S O)))))))))))))))))
+               acc N0
            in
            add0 (add0 (add0 (sigma_UU2081_0 a) b) (sigma_UU2080_0 c)) d
     in
     app acc (Cons (wtp, Nil)))
-    (upto_n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-      (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-      (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+    (upto_n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+      (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+      (S (S (S (S (S (S (S (S (S (S (S (S
       O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) Nil
 
 (** val sha256_intermediate : n list -> n list -> n list **)
@@ -2966,21 +2248,19 @@ let sha256_intermediate w0 h =
       let Pair (y4, c0) = y3 in
       let Pair (a0, b0) = y4 in
       let t_UU2081_ =
-        add0
-          (add0 (add0 (add0 h1 (sigma_UU2081_ e0)) (ch e0 f0 g0))
-            (nth t k N0)) (nth t w0 N0)
+        add0 (add0 (add0 (add0 h1 (sigma_UU2081_ e0)) (ch e0 f0 g0)) (nth t k N0))
+          (nth t w0 N0)
       in
       let t_UU2082_ = add0 (sigma_UU2080_ a0) (maj a0 b0 c0) in
       let e1 = add0 d0 t_UU2081_ in
       let a1 = add0 t_UU2081_ t_UU2082_ in
-      Pair ((Pair ((Pair ((Pair ((Pair ((Pair ((Pair (a1, a0)), b0)), c0)),
-      e1)), e0)), f0)), g0))
-      (upto_n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-        (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-        (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
-        O)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
-      (Pair ((Pair ((Pair ((Pair ((Pair ((Pair ((Pair (a, b)), c)), d)), e)),
-      f)), g)), h0))
+      Pair ((Pair ((Pair ((Pair ((Pair ((Pair ((Pair (a1, a0)), b0)), c0)), e1)), e0)),
+      f0)), g0))
+      (upto_n (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+        (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S (S
+        (S (S (S (S (S (S (S (S (S (S (S (S
+        O))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) (Pair ((Pair
+      ((Pair ((Pair ((Pair ((Pair ((Pair (a, b)), c)), d)), e)), f)), g)), h0))
   in
   let Pair (p0, g0) = p in
   let Pair (p1, f0) = p0 in
@@ -2989,13 +2269,13 @@ let sha256_intermediate w0 h =
   let Pair (p4, c0) = p3 in
   let Pair (a0, b0) = p4 in
   Cons ((add0 a0 (nth O h N0)), (Cons ((add0 b0 (nth (S O) h N0)), (Cons
-  ((add0 c0 (nth (S (S O)) h N0)), (Cons ((add0 d0 (nth (S (S (S O))) h N0)),
-  (Cons ((add0 e0 (nth (S (S (S (S O)))) h N0)), (Cons
+  ((add0 c0 (nth (S (S O)) h N0)), (Cons ((add0 d0 (nth (S (S (S O))) h N0)), (Cons
+  ((add0 e0 (nth (S (S (S (S O)))) h N0)), (Cons
   ((add0 f0 (nth (S (S (S (S (S O))))) h N0)), (Cons
   ((add0 g0 (nth (S (S (S (S (S (S O)))))) h N0)), (Cons
   ((add0 h1 (nth (S (S (S (S (S (S (S O))))))) h N0)), Nil)))))))))))))))
 
-(** val sha256 : byte list -> n list **)
+(** val sha256 : char list -> n list **)
 
 let sha256 m0 =
   let n0 = N.of_nat (length m0) in
@@ -3004,25 +2284,23 @@ let sha256 m0 =
     Z.to_N
       (Z.modulo
         (Z.sub (Zpos (XO (XO (XO (XO (XO (XO (XI (XI XH)))))))))
-          (Z.add (Z.of_N mbits) (Zpos XH))) (Zpos (XO (XO (XO (XO (XO (XO (XO
-        (XO (XO XH)))))))))))
+          (Z.add (Z.of_N mbits) (Zpos XH))) (Zpos (XO (XO (XO (XO (XO (XO (XO (XO (XO
+        XH)))))))))))
   in
   let wt = N.div (N.add (Npos XH) k0) (Npos (XO (XO (XO XH)))) in
   let ms =
-    N.div (N.add (N.add n0 wt) (Npos (XO (XO (XO XH))))) (Npos (XO (XO (XO
-      (XO (XO (XO XH)))))))
+    N.div (N.add (N.add n0 wt) (Npos (XO (XO (XO XH))))) (Npos (XO (XO (XO (XO (XO (XO
+      XH)))))))
   in
-  fold_left (fun h i -> sha256_intermediate (w m0 i) h)
-    (upto_n (N.to_nat ms)) h_UU2080_
+  fold_left (fun h i -> sha256_intermediate (w m0 i) h) (upto_n (N.to_nat ms)) h_UU2080_
 
-(** val concat_bytes : byte list -> n **)
+(** val concat_bytes : char list -> n **)
 
 let concat_bytes bs =
   fold_left (fun acc b ->
-    N.add (N.mul acc (N.shiftl (Npos XH) (Npos (XO (XO (XO XH)))))) (to_N0 b))
-    bs N0
+    N.add (N.mul acc (N.shiftl (Npos XH) (Npos (XO (XO (XO XH)))))) (to_N0 b)) bs N0
 
-(** val sha256_string : string -> n **)
+(** val sha256_string : char list -> n **)
 
 let sha256_string s =
   concat_bytes (flat_map big_endien_list_N (sha256 (list_byte_of_string s)))
